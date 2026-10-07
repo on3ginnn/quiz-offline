@@ -1,0 +1,13 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.idea/
+# данные участников и пакеты комнат — не в git
+data/
+rooms/
+*.sqlite
