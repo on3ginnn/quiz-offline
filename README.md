@@ -8,7 +8,7 @@
 
 ```bash
 python -m venv venv
-venv\Scriptsctivate
+venv/Scripts/activate
 pip install -e ".[dev]"
 python -m quiz_offline.main
 ```
