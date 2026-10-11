@@ -78,6 +78,10 @@ def _parse_questions(raw_questions: list, topic_order: int | None) -> list[Quest
     return result
 
 
+def _int_or(value: Any, default: int) -> int:
+    return default if value is None else int(value)
+
+
 def _parse_room_policy(raw: dict) -> RoomPolicy:
     public_id = (raw.get("public_id") or "").strip()
     if not public_id:
@@ -98,9 +102,9 @@ def _parse_room_policy(raw: dict) -> RoomPolicy:
         show_results=bool(raw.get("show_results", True)),
         show_answers=bool(raw.get("show_answers")),
         show_correct_answers=bool(raw.get("show_correct_answers")),
-        grade_3_min_percent=int(raw.get("grade_3_min_percent") or 70),
-        grade_4_min_percent=int(raw.get("grade_4_min_percent") or 80),
-        grade_5_min_percent=int(raw.get("grade_5_min_percent") or 90),
+        grade_3_min_percent=_int_or(raw.get("grade_3_min_percent"), 70),
+        grade_4_min_percent=_int_or(raw.get("grade_4_min_percent"), 80),
+        grade_5_min_percent=_int_or(raw.get("grade_5_min_percent"), 90),
         grade_attempt_mode=(raw.get("grade_attempt_mode") or "best").strip(),
         questions_sample_size=raw.get("questions_sample_size"),
     )

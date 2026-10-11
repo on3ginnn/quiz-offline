@@ -3,7 +3,7 @@ from pathlib import Path
 
 from quiz_offline.storage import Storage
 from quiz_offline.ui.formatters import format_attempts_allowance
-from tests.test_room_loader import _sample_v3_single
+from tests.player.test_room_loader import _sample_v3_single
 
 
 def test_register_and_hall_aggregates(tmp_path: Path):

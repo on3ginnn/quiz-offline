@@ -70,3 +70,10 @@ def test_load_from_file(tmp_path: Path):
 
     pkg = load_room_package_from_path(path)
     assert pkg.quiz_title == "Тест"
+
+
+def test_zero_grade_threshold_is_kept():
+    data = _sample_v3_single()
+    data["room"]["grade_3_min_percent"] = 0
+    pkg = parse_room_package_dict(data)
+    assert pkg.room.grade_3_min_percent == 0

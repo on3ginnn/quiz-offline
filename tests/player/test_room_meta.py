@@ -7,7 +7,7 @@ from quiz_offline.ui.room_meta import (
     build_room_meta_labels,
     estimate_questions_per_attempt,
 )
-from tests.test_room_loader import _sample_v3_single
+from tests.player.test_room_loader import _sample_v3_single
 
 
 def test_estimate_questions_single_full_bank():

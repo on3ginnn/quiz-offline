@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "quiz-offline"
 version = "0.1.0"
-description = "Офлайн-проигрыватель пакетов комнат quiz"
+description = "Офлайн-проигрыватель пакетов quiz и конструктор тестов для администраторов"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -22,10 +22,11 @@ dev = [
 
 [project.scripts]
 quiz-offline = "quiz_offline.main:main"
+quiz-admin = "quiz_admin.main:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["quiz_offline*"]
+include = ["quiz_offline*", "quiz_admin*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
