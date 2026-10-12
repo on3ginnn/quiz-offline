@@ -8,13 +8,14 @@ from PyQt6.QtWidgets import QApplication
 
 from quiz_admin.storage import AdminStorage
 from quiz_admin.ui.main_window import MainWindow
-from quiz_admin.ui.theme import app_stylesheet
+from quiz_admin.ui.theme import app_stylesheet, install_russian_translations, load_scale
 
 
 def main() -> int:
     app = QApplication(sys.argv)
     app.setApplicationName("Quiz Admin")
-    app.setStyleSheet(app_stylesheet())
+    install_russian_translations(app)
+    app.setStyleSheet(app_stylesheet(load_scale()))
     storage = AdminStorage()
     window = MainWindow(storage)
     window.show()

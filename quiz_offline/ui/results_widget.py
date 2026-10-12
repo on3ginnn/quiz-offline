@@ -8,6 +8,7 @@ from PyQt6.QtWidgets import (
     QHBoxLayout,
     QLabel,
     QPushButton,
+    QScrollArea,
     QVBoxLayout,
     QWidget,
 )
@@ -24,7 +25,15 @@ class ResultsWidget(QWidget):
         super().__init__(parent)
         self._context: dict | None = None
 
-        outer = QVBoxLayout(self)
+        page = QVBoxLayout(self)
+        page.setContentsMargins(0, 0, 0, 0)
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setFrameShape(QFrame.Shape.NoFrame)
+        host = QWidget()
+        scroll.setWidget(host)
+        page.addWidget(scroll)
+        outer = QVBoxLayout(host)
         outer.setContentsMargins(24, 24, 24, 24)
         outer.addStretch(1)
 
@@ -33,10 +42,15 @@ class ResultsWidget(QWidget):
 
         self.card = QFrame()
         self.card.setObjectName("resultCard")
-        self.card.setMaximumWidth(640)
+        self.card.setMaximumWidth(760)
         card = QVBoxLayout(self.card)
-        card.setContentsMargins(28, 24, 28, 20)
+        card.setContentsMargins(32, 28, 32, 24)
         card.setSpacing(16)
+
+        self.grade_label = QLabel()
+        self.grade_label.setObjectName("gradeResult")
+        self.grade_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        card.addWidget(self.grade_label)
 
         top_row = QHBoxLayout()
         top_row.setSpacing(24)
@@ -45,11 +59,6 @@ class ResultsWidget(QWidget):
         grade_col = QVBoxLayout()
         grade_col.setSpacing(10)
         grade_col.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-        self.grade_label = QLabel()
-        self.grade_label.setObjectName("gradeResult")
-        self.grade_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        grade_col.addWidget(self.grade_label)
-
         self.donut = DonutChart()
         grade_col.addWidget(self.donut, alignment=Qt.AlignmentFlag.AlignHCenter)
 
@@ -77,26 +86,30 @@ class ResultsWidget(QWidget):
 
         card.addLayout(top_row)
 
-        bottom_row = QHBoxLayout()
-        bottom_row.setSpacing(12)
         self.hint = QLabel()
         self.hint.setObjectName("subtitle")
         self.hint.setWordWrap(True)
-        bottom_row.addWidget(self.hint, stretch=1)
+        self.hint.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        card.addWidget(self.hint)
+
+        bottom_row = QHBoxLayout()
+        bottom_row.setSpacing(12)
 
         actions = QHBoxLayout()
+        actions.addStretch(1)
         actions.setSpacing(10)
         self.leave_btn = QPushButton("Покинуть тест")
         self.leave_btn.setObjectName("resultBtn")
-        self.leave_btn.setMinimumWidth(156)
+        self.leave_btn.setMinimumWidth(168)
         self.leave_btn.clicked.connect(self.leave_test.emit)
         self.retry_btn = QPushButton("Пройти ещё раз")
         self.retry_btn.setObjectName("primary")
-        self.retry_btn.setMinimumWidth(156)
+        self.retry_btn.setMinimumWidth(168)
         self.retry_btn.clicked.connect(self.retry.emit)
         actions.addWidget(self.leave_btn)
         actions.addWidget(self.retry_btn)
-        bottom_row.addLayout(actions)
+        actions.addStretch(1)
+        bottom_row.addLayout(actions, stretch=1)
         card.addLayout(bottom_row)
 
         center.addWidget(self.card)
@@ -111,35 +124,23 @@ class ResultsWidget(QWidget):
         visual = outcome_for_percent(result.weighted_percent)
         grade = result.grade
 
-        self.card.setStyleSheet(
-            f"QFrame#resultCard {{ background: {visual.bg}; border: 1px solid #dbdbdb;"
-            f" border-radius: 12px; }}"
-        )
-        self.grade_label.setText(f"Оценка {grade}")
-        self.grade_label.setStyleSheet(
-            f"font-size: 32px; font-weight: 700; color: {visual.color};"
-            f" background: transparent;"
-        )
+        for widget in (self.card, self.grade_label, self.time_value_lbl):
+            widget.setProperty("tone", visual.tone)
+            widget.style().unpolish(widget)
+            widget.style().polish(widget)
+        self.grade_label.setText(f"Ваша оценка: {grade}")
 
         self.donut.set_value(
             result.weighted_percent,
             visual.color,
-            center_text=str(grade),
+            center_text=f"{round(result.weighted_percent)}%",
         )
-        self.percent_caption.setTextFormat(Qt.TextFormat.RichText)
-        grade_caption = format_grade_scale_caption(grade)
         self.percent_caption.setText(
-            f"<span style='color:{visual.color}; font-weight:600; font-size:16px;'>"
-            f"{grade_caption}</span>"
-            f" <span style='color:#646464;'>баллов по 5-балльной шкале</span>"
+            f"{format_grade_scale_caption(grade)} по 5-балльной шкале"
         )
 
         mins, secs = divmod(int(result.duration_sec), 60)
         self.time_value_lbl.setText(f"⏱  {mins}:{secs:02d}")
-        self.time_value_lbl.setStyleSheet(
-            f"font-size: 22px; font-weight: 600; color: {visual.color};"
-            f" background: transparent;"
-        )
 
         if context.get("finished_by_timer"):
             self.hint.setText("Время истекло — ответы отправлены автоматически.")

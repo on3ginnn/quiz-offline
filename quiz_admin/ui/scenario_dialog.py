@@ -9,9 +9,12 @@ from PyQt6.QtWidgets import (
     QDialog,
     QDialogButtonBox,
     QFormLayout,
+    QFrame,
     QHBoxLayout,
+    QHeaderView,
     QLabel,
     QLineEdit,
+    QScrollArea,
     QSpinBox,
     QTableWidget,
     QTableWidgetItem,
@@ -43,101 +46,161 @@ class ScenarioDialog(QDialog):
         }
         self._bank_size = 0 if self._composite else storage.count_questions(quiz.id)
         self.setWindowTitle(f"Сценарий прохождения — {quiz.title}")
-        self.setMinimumWidth(520)
+        self.setMinimumSize(660, 560)
+        self.resize(760, 780)
 
-        form = QFormLayout()
+        def card(title: str, hint: str = "") -> QFormLayout:
+            frame = QFrame()
+            frame.setObjectName("card")
+            outer = QVBoxLayout(frame)
+            outer.setContentsMargins(20, 16, 20, 18)
+            outer.setSpacing(8)
+            heading = QLabel(title)
+            heading.setObjectName("sectionTitle")
+            outer.addWidget(heading)
+            if hint:
+                sub = QLabel(hint)
+                sub.setObjectName("subtitle")
+                sub.setWordWrap(True)
+                outer.addWidget(sub)
+            form = QFormLayout()
+            form.setVerticalSpacing(12)
+            form.setHorizontalSpacing(16)
+            form.setRowWrapPolicy(QFormLayout.RowWrapPolicy.WrapLongRows)
+            form.setFieldGrowthPolicy(QFormLayout.FieldGrowthPolicy.AllNonFixedFieldsGrow)
+            outer.addLayout(form)
+            sections.addWidget(frame)
+            return form
+
+        def note(text: str) -> QLabel:
+            label = QLabel(text)
+            label.setObjectName("hint")
+            label.setWordWrap(True)
+            return label
+
+        content = QWidget()
+        sections = QVBoxLayout(content)
+        sections.setContentsMargins(0, 0, 8, 0)
+        sections.setSpacing(14)
+
+        main = card("Основное")
         self.name_edit = QLineEdit(scenario.name)
-        form.addRow("Название сценария", self.name_edit)
+        main.addRow("Название сценария", self.name_edit)
 
+        timing = card("Время и попытки")
         self.time_mode = QComboBox()
-        self.time_mode.addItem("Авто (1 минута на вопрос)", "auto")
-        self.time_mode.addItem("Вручную", "manual")
+        self.time_mode.addItem("Авто — 1 минута на вопрос", "auto")
+        self.time_mode.addItem("Задать вручную", "manual")
         self.time_minutes = QSpinBox()
         self.time_minutes.setRange(1, 600)
         self.time_minutes.setSuffix(" мин")
         time_row = QHBoxLayout()
-        time_row.addWidget(self.time_mode)
+        time_row.setSpacing(10)
+        time_row.addWidget(self.time_mode, stretch=1)
         time_row.addWidget(self.time_minutes)
-        form.addRow("Лимит времени", time_row)
+        timing.addRow("Время на тест", time_row)
 
         self.attempts_unlimited = QCheckBox("Без ограничения")
         self.attempts = QSpinBox()
         self.attempts.setRange(1, MAX_ATTEMPTS)
         attempts_row = QHBoxLayout()
+        attempts_row.setSpacing(10)
         attempts_row.addWidget(self.attempts)
         attempts_row.addWidget(self.attempts_unlimited)
-        form.addRow("Попыток на участника", attempts_row)
+        attempts_row.addStretch(1)
+        timing.addRow("Попыток на участника", attempts_row)
 
-        self.shuffle_questions = QCheckBox("Перемешивать вопросы")
+        questions = card("Вопросы")
+        self.shuffle_questions = QCheckBox("Перемешивать порядок вопросов")
         self.shuffle_options = QCheckBox("Перемешивать варианты ответов")
-        form.addRow(self.shuffle_questions)
-        form.addRow(self.shuffle_options)
+        questions.addRow(self.shuffle_questions)
+        questions.addRow(self.shuffle_options)
 
         self.selection_mode = QComboBox()
         self.selection_mode.addItem("Новая выборка при каждой попытке", "per_attempt")
         self.selection_mode.addItem("Одна выборка на участника", "per_participant")
-        form.addRow("Выборка вопросов", self.selection_mode)
+        questions.addRow("Какие вопросы попадаются", self.selection_mode)
+        questions.addRow(
+            note("«Одна выборка» — участник при повторе получает те же вопросы.")
+        )
 
         self.sample_all = QCheckBox("Все вопросы")
         self.sample = QSpinBox()
         self.sample.setRange(1, max(1, self._bank_size))
-        sample_row = QHBoxLayout()
+        sample_row_w = QWidget()
+        sample_row = QHBoxLayout(sample_row_w)
+        sample_row.setContentsMargins(0, 0, 0, 0)
+        sample_row.setSpacing(10)
         sample_row.addWidget(self.sample)
         sample_row.addWidget(self.sample_all)
-        self._sample_row_label = QLabel("Размер выборки")
-        form.addRow(self._sample_row_label, sample_row)
-        self._sample_widgets = (self._sample_row_label, self.sample, self.sample_all)
+        sample_row.addStretch(1)
+        self._sample_row_label = QLabel("Сколько вопросов в попытке")
+        questions.addRow(self._sample_row_label, sample_row_w)
+        self._sample_widgets = (self._sample_row_label, self.sample, self.sample_all, sample_row_w)
 
-        self.show_results = QCheckBox("Показывать результат")
-        self.show_answers = QCheckBox("Показывать ответы участника")
+        results = card("Что видит участник после теста")
+        self.show_results = QCheckBox("Показывать оценку и результат")
+        self.show_answers = QCheckBox("Показывать его ответы")
         self.show_correct = QCheckBox("Показывать правильные ответы")
-        form.addRow(self.show_results)
-        form.addRow(self.show_answers)
-        form.addRow(self.show_correct)
+        results.addRow(self.show_results)
+        results.addRow(self.show_answers)
+        results.addRow(self.show_correct)
 
+        grading = card(
+            "Оценки",
+            "Минимальный процент правильных ответов для каждой оценки.",
+        )
         self.g3 = QSpinBox()
         self.g4 = QSpinBox()
         self.g5 = QSpinBox()
-        grades = QHBoxLayout()
-        for label, spin in (("«3» от", self.g3), ("«4» от", self.g4), ("«5» от", self.g5)):
+        for label, spin in (("Для оценки «3» — от", self.g3), ("Для оценки «4» — от", self.g4), ("Для оценки «5» — от", self.g5)):
             spin.setRange(0, 100)
             spin.setSuffix(" %")
-            grades.addWidget(QLabel(label))
-            grades.addWidget(spin)
-        form.addRow("Пороги оценок", grades)
-
+            grading.addRow(label, spin)
         self.attempt_mode = QComboBox()
         self.attempt_mode.addItem("Лучшая попытка", "best")
         self.attempt_mode.addItem("Последняя попытка", "last")
-        form.addRow("Какая попытка идёт в журнал", self.attempt_mode)
-
-        layout = QVBoxLayout(self)
-        layout.addLayout(form)
+        grading.addRow("Какая попытка идёт в журнал", self.attempt_mode)
 
         self.quota_table: QTableWidget | None = None
         if self._composite:
-            title = QLabel("Квоты по темам")
-            title.setObjectName("sectionTitle")
-            hint = QLabel(
+            quotas = card(
+                "Квоты по темам",
                 "Сколько вопросов брать из каждой темы. Без отметки — берутся все вопросы темы, "
-                "0 — тема пропускается."
+                "0 — тема пропускается.",
             )
-            hint.setObjectName("subtitle")
-            hint.setWordWrap(True)
-            layout.addWidget(title)
-            layout.addWidget(hint)
             self.quota_table = QTableWidget(len(self._topics), 3)
-            self.quota_table.setHorizontalHeaderLabels(["Тема", "Вопросов в теме", "Квота"])
+            self.quota_table.setHorizontalHeaderLabels(["Тема", "Вопросов", "Квота"])
             self.quota_table.verticalHeader().setVisible(False)
-            self.quota_table.horizontalHeader().setStretchLastSection(True)
-            self.quota_table.setColumnWidth(0, 240)
-            self.quota_table.setMinimumHeight(160)
-            layout.addWidget(self.quota_table)
+            self.quota_table.setWordWrap(True)
+            self.quota_table.setSelectionMode(QTableWidget.SelectionMode.NoSelection)
+            header = self.quota_table.horizontalHeader()
+            header.setSectionResizeMode(0, QHeaderView.ResizeMode.Stretch)
+            header.setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
+            header.setSectionResizeMode(2, QHeaderView.ResizeMode.ResizeToContents)
+            self.quota_table.verticalHeader().setDefaultSectionSize(64)
+            self.quota_table.setMinimumHeight(
+                min(420, 64 * len(self._topics) + 56)
+            )
+            quotas.addRow(self.quota_table)
+        sections.addStretch(1)
+
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setFrameShape(QFrame.Shape.NoFrame)
+        scroll.setWidget(content)
+
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(20, 16, 20, 16)
+        layout.setSpacing(12)
+        layout.addWidget(scroll, stretch=1)
 
         buttons = QDialogButtonBox(
             QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
         )
-        buttons.button(QDialogButtonBox.StandardButton.Ok).setText("Сохранить")
+        save_btn = buttons.button(QDialogButtonBox.StandardButton.Ok)
+        save_btn.setText("Сохранить")
+        save_btn.setObjectName("primary")
         buttons.button(QDialogButtonBox.StandardButton.Cancel).setText("Отмена")
         buttons.accepted.connect(self._accept)
         buttons.rejected.connect(self.reject)
@@ -182,7 +245,8 @@ class ScenarioDialog(QDialog):
                 self.quota_table.item(row, col).setFlags(Qt.ItemFlag.ItemIsEnabled)
             cell = QWidget()
             h = QHBoxLayout(cell)
-            h.setContentsMargins(4, 0, 4, 0)
+            h.setContentsMargins(8, 0, 8, 0)
+            h.setSpacing(8)
             check = QCheckBox()
             spin = QSpinBox()
             spin.setRange(0, max(0, self._pool[topic.id]))

@@ -51,13 +51,13 @@ class RoomCard(QFrame):
         )
 
         root = QHBoxLayout(self)
-        root.setContentsMargins(16, 14, 16, 14)
-        root.setSpacing(14)
+        root.setContentsMargins(20, 18, 20, 18)
+        root.setSpacing(18)
         root.setAlignment(Qt.AlignmentFlag.AlignVCenter)
 
         icon_badge = QFrame()
         icon_badge.setObjectName("roomCardIconBadge")
-        icon_badge.setFixedSize(44, 44)
+        icon_badge.setFixedSize(56, 56)
         badge_layout = QVBoxLayout(icon_badge)
         badge_layout.setContentsMargins(0, 0, 0, 0)
         icon_lbl = QLabel(_kind_icon(quiz_kind))
@@ -67,7 +67,7 @@ class RoomCard(QFrame):
         root.addWidget(icon_badge)
 
         text_col = QVBoxLayout()
-        text_col.setSpacing(6)
+        text_col.setSpacing(10)
         text_col.setContentsMargins(0, 0, 0, 0)
 
         heading = QLabel(f"{row.quiz_title} · {row.room_name}")
@@ -86,7 +86,7 @@ class RoomCard(QFrame):
         for label in labels:
             if "попыт" in label or "ограничения" in label:
                 tooltips.append("Разрешено попыток по настройкам комнаты")
-            elif label.startswith("👥"):
+            elif label.startswith("Прошли"):
                 tooltips.append("Прошли тест хотя бы раз")
             else:
                 tooltips.append(None)
@@ -103,7 +103,7 @@ class RoomCard(QFrame):
         root.addLayout(text_col, stretch=1)
 
         actions = QHBoxLayout()
-        actions.setSpacing(4)
+        actions.setSpacing(10)
         actions.setAlignment(Qt.AlignmentFlag.AlignVCenter)
 
         enter_btn = QPushButton("Войти →")
@@ -115,10 +115,11 @@ class RoomCard(QFrame):
         menu_btn.setObjectName("roomMenuBtn")
         menu_btn.setText("⋮")
         menu_btn.setPopupMode(QToolButton.ToolButtonPopupMode.InstantPopup)
-        menu_btn.setToolTip("Дополнительные действия")
+        menu_btn.setToolTip("Ещё: заменить файл пакета")
+        menu_btn.setAccessibleName("Дополнительные действия")
         menu = QMenu(menu_btn)
         menu.setObjectName("roomCardMenu")
-        menu.addAction("Изменить", self._emit_update)
+        menu.addAction("Заменить файл комнаты…", self._emit_update)
         menu_btn.setMenu(menu)
         actions.addWidget(menu_btn)
         root.addLayout(actions)

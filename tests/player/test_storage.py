@@ -73,7 +73,7 @@ def test_register_and_hall_aggregates(tmp_path: Path):
 
 
 def test_participant_count_only_with_attempts(tmp_path: Path):
-    """Счётчик 👥 на карточке совпадает с числом строк в зале."""
+    """Счётчик «Прошли» на карточке совпадает с числом строк в зале."""
     db = tmp_path / "journal.sqlite"
     storage = Storage(db)
     pkg_path = tmp_path / "pkg.json"

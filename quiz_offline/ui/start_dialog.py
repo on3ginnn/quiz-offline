@@ -28,19 +28,24 @@ class StartAttemptDialog(QDialog):
         super().__init__(parent)
         self._package = package
         self.setWindowTitle("Начать попытку")
-        self.resize(480, 320)
+        self.setMinimumWidth(560)
 
         layout = QVBoxLayout(self)
-        layout.setSpacing(12)
+        layout.setContentsMargins(28, 24, 28, 24)
+        layout.setSpacing(14)
         room = package.room
         assert room is not None
 
+        title = QLabel("Введите ваши данные")
+        title.setObjectName("sectionTitle")
+        layout.addWidget(title)
+
+        attempts = "без ограничения" if room.attempts_unlimited else room.allowed_attempts
         info = QLabel(
-            f"Лимит попыток: "
-            f"{'без ограничения' if room.attempts_unlimited else room.allowed_attempts}\n"
-            f"Пороги оценок: 3 — {room.grade_3_min_percent}%, "
-            f"4 — {room.grade_4_min_percent}%, "
-            f"5 — {room.grade_5_min_percent}%"
+            f"Попыток: {attempts}\n"
+            f"Для оценки «3» нужно набрать {room.grade_3_min_percent}%, "
+            f"«4» — {room.grade_4_min_percent}%, "
+            f"«5» — {room.grade_5_min_percent}%"
         )
         info.setObjectName("subtitle")
         info.setWordWrap(True)
@@ -49,32 +54,39 @@ class StartAttemptDialog(QDialog):
         est_q = max(1, len(package.questions))
         mins = effective_time_limit_minutes(room, est_q)
         time_label = QLabel(
-            f"Лимит времени: {mins} мин "
-            f"({'авто' if room.time_limit_mode == 'auto' else 'вручную'})"
+            f"Время на тест: {mins} мин"
         )
         time_label.setObjectName("subtitle")
         layout.addWidget(time_label)
 
-        hint = QLabel("Укажите ФИО так же, как в журнале зала.")
+        hint = QLabel(
+            "Пишите ФИО одинаково при каждой попытке — по нему ведётся журнал."
+        )
+        hint.setWordWrap(True)
         hint.setObjectName("subtitle")
         layout.addWidget(hint)
 
         form = QFormLayout()
         self.last_edit = QLineEdit()
-        self.last_edit.setPlaceholderText("Фамилия")
+        self.last_edit.setPlaceholderText("Например: Иванов")
         form.addRow("Фамилия", self.last_edit)
         self.first_edit = QLineEdit()
-        self.first_edit.setPlaceholderText("Имя")
+        self.first_edit.setPlaceholderText("Например: Иван")
         form.addRow("Имя", self.first_edit)
         self.middle_edit = QLineEdit()
-        self.middle_edit.setPlaceholderText("Отчество (необязательно)")
+        self.middle_edit.setPlaceholderText("Необязательно")
         form.addRow("Отчество", self.middle_edit)
+        form.setVerticalSpacing(10)
         layout.addLayout(form)
 
         buttons = QDialogButtonBox(
             QDialogButtonBox.StandardButton.Ok
             | QDialogButtonBox.StandardButton.Cancel
         )
+        ok_btn = buttons.button(QDialogButtonBox.StandardButton.Ok)
+        ok_btn.setText("Начать тест")
+        ok_btn.setObjectName("primary")
+        buttons.button(QDialogButtonBox.StandardButton.Cancel).setText("Отмена")
         buttons.accepted.connect(self._accept)
         buttons.rejected.connect(self.reject)
         layout.addWidget(buttons)

@@ -2,12 +2,19 @@
 
 from __future__ import annotations
 
-from PyQt6.QtWidgets import QMainWindow, QStackedWidget, QVBoxLayout, QWidget
+from PyQt6.QtWidgets import (
+    QHBoxLayout,
+    QMainWindow,
+    QStackedWidget,
+    QVBoxLayout,
+    QWidget,
+)
 
 from quiz_offline.storage import Storage
 from quiz_offline.ui.hall_widget import HallWidget
 from quiz_offline.ui.home_widget import HomeWidget
 from quiz_offline.ui.results_widget import ResultsWidget
+from quiz_offline.ui.scale_bar import ScaleBar
 from quiz_offline.ui.taking_widget import TakingWidget
 
 
@@ -21,12 +28,20 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.storage = storage
         self.setWindowTitle("Quiz Offline")
-        self.resize(960, 640)
+        self.resize(1100, 720)
+        self.setMinimumSize(760, 520)
 
         central = QWidget()
         self.setCentralWidget(central)
         layout = QVBoxLayout(central)
-        layout.setContentsMargins(16, 16, 16, 16)
+        layout.setContentsMargins(24, 12, 24, 20)
+        layout.setSpacing(8)
+
+        top_bar = QHBoxLayout()
+        top_bar.addStretch(1)
+        self.scale_bar = ScaleBar()
+        top_bar.addWidget(self.scale_bar)
+        layout.addLayout(top_bar)
 
         self.stack = QStackedWidget()
         layout.addWidget(self.stack)

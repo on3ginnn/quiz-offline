@@ -82,13 +82,13 @@ def build_room_card_meta(
     *,
     tested_participant_count: int,
 ) -> RoomCardMeta:
-    """Мета для карточки на главной: попытки и 👥 первыми, затем время и вопросы."""
+    """Мета для карточки на главной: попытки и число прошедших первыми, затем время и вопросы."""
     kind = "single"
     if package is None:
         return RoomCardMeta(
             quiz_kind=kind,
             hall_badges=[],
-            home_badges=[f"👥 {tested_participant_count}"],
+            home_badges=[f"Прошли: {tested_participant_count}"],
         )
 
     kind = package.quiz_kind or "single"
@@ -96,7 +96,7 @@ def build_room_card_meta(
     home_badges: list[str] = []
     if hall_badges:
         home_badges.append(hall_badges[0])
-    home_badges.append(f"👥 {tested_participant_count}")
+    home_badges.append(f"Прошли: {tested_participant_count}")
     if len(hall_badges) >= 3:
         home_badges.extend(hall_badges[1:3])
     return RoomCardMeta(

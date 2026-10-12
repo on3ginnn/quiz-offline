@@ -10,8 +10,6 @@ from PyQt6.QtWidgets import (
     QHBoxLayout,
     QInputDialog,
     QLabel,
-    QListWidget,
-    QListWidgetItem,
     QPushButton,
     QVBoxLayout,
     QWidget,
@@ -21,6 +19,7 @@ from quiz_admin import services
 from quiz_admin.importers import ImportDataError, load_import_file
 from quiz_admin.models import QUIZ_COMPOSITE, QUIZ_SINGLE
 from quiz_admin.storage import AdminStorage
+from quiz_admin.ui.rich_list import RichListWidget, add_rich_item
 from quiz_admin.ui.dialogs import (
     NewQuizDialog,
     PickQuizzesDialog,
@@ -37,43 +36,56 @@ class LibraryWidget(QWidget):
         self._storage = storage
 
         root = QVBoxLayout(self)
+        root.setSpacing(14)
         header = QHBoxLayout()
         titles = QVBoxLayout()
         title = QLabel("Конструктор тестов")
         title.setObjectName("pageTitle")
         subtitle = QLabel(
-            "Тест содержит вопросы; сценарий прохождения задаёт правила. "
-            "Пакет «тест + сценарий» выгружается для плеера."
+            "Здесь хранятся тесты. Создайте тест, добавьте вопросы и настройте сценарий — "
+            "затем выгрузите файл для программы прохождения."
         )
         subtitle.setObjectName("subtitle")
         subtitle.setWordWrap(True)
         titles.addWidget(title)
         titles.addWidget(subtitle)
         header.addLayout(titles, stretch=1)
-        self.new_btn = QPushButton("+ Новый тест")
-        self.new_btn.setObjectName("primary")
-        self.import_btn = QPushButton("Импорт JSON…")
-        self.merge_btn = QPushButton("Объединить в мультитест…")
-        for b in (self.import_btn, self.merge_btn, self.new_btn):
-            header.addWidget(b)
         root.addLayout(header)
 
-        self.empty_label = QLabel("Тестов пока нет. Создайте новый или импортируйте JSON.")
-        self.empty_label.setObjectName("subtitle")
+        toolbar = QHBoxLayout()
+        toolbar.setSpacing(10)
+        self.new_btn = QPushButton("+ Новый тест")
+        self.new_btn.setObjectName("primary")
+        self.import_btn = QPushButton("Импорт из файла…")
+        self.import_btn.setToolTip("Загрузить тест или пакет из JSON-файла")
+        self.merge_btn = QPushButton("Объединить в мультитест…")
+        self.merge_btn.setToolTip("Собрать из нескольких тестов один с темами (нужно ≥ 2 теста)")
+        for b in (self.new_btn, self.import_btn, self.merge_btn):
+            toolbar.addWidget(b)
+        toolbar.addStretch(1)
+        root.addLayout(toolbar)
+
+        self.empty_label = QLabel(
+            "Тестов пока нет.\nНажмите «+ Новый тест» или «Импорт из файла…»."
+        )
+        self.empty_label.setObjectName("emptyState")
         self.empty_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        root.addWidget(self.empty_label)
-        self.list = QListWidget()
+        root.addWidget(self.empty_label, stretch=1)
+        self.list = RichListWidget()
         root.addWidget(self.list, stretch=1)
 
         actions = QHBoxLayout()
+        actions.setSpacing(10)
         self.open_btn = QPushButton("Открыть")
+        self.open_btn.setObjectName("primary")
         self.copy_btn = QPushButton("Дублировать")
         self.rename_btn = QPushButton("Переименовать")
         self.del_btn = QPushButton("Удалить")
         self.del_btn.setObjectName("danger")
-        for b in (self.open_btn, self.copy_btn, self.rename_btn, self.del_btn):
+        for b in (self.open_btn, self.copy_btn, self.rename_btn):
             actions.addWidget(b)
         actions.addStretch(1)
+        actions.addWidget(self.del_btn)
         root.addLayout(actions)
 
         self.new_btn.clicked.connect(self._new)
@@ -95,9 +107,12 @@ class LibraryWidget(QWidget):
                 meta = f"Мультитест · тем: {s.topic_count} · вопросов: {s.question_count}"
             else:
                 meta = f"Тест · вопросов: {s.question_count}"
-            item = QListWidgetItem(f"{s.quiz.title}\n{meta} · сценариев: {s.scenario_count}")
-            item.setData(Qt.ItemDataRole.UserRole, s.quiz.id)
-            self.list.addItem(item)
+            item = add_rich_item(
+                self.list,
+                s.quiz.title,
+                f"{meta} · сценариев: {s.scenario_count}",
+                data=s.quiz.id,
+            )
             if s.quiz.id == select_id:
                 self.list.setCurrentItem(item)
         if self.list.currentRow() < 0 and self.list.count():

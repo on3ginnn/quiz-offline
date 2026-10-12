@@ -45,6 +45,6 @@ def test_build_room_card_meta_order():
     pkg = parse_room_package_dict(_sample_v3_single())
     meta = build_room_card_meta(pkg, tested_participant_count=4)
     assert meta.home_badges[0] == "3 попытки"
-    assert meta.home_badges[1] == "👥 4"
+    assert meta.home_badges[1] == "Прошли: 4"
     assert "мин" in meta.home_badges[2]
     assert "вопрос" in meta.home_badges[3]

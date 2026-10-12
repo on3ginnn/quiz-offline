@@ -9,9 +9,9 @@ from PyQt6.QtWidgets import (
     QHBoxLayout,
     QLabel,
     QLineEdit,
-    QListWidget,
     QPlainTextEdit,
     QPushButton,
+    QScrollArea,
     QToolButton,
     QVBoxLayout,
     QWidget,
@@ -26,7 +26,39 @@ from quiz_admin.models import (
 )
 from quiz_admin.storage import AdminStorage
 from quiz_admin.ui.dialogs import ask_save_changes, show_errors
+from quiz_admin.ui.responsive_splitter import ResponsiveSplitter
+from quiz_admin.ui.rich_list import RichListWidget, add_rich_item, update_rich_item
 from quiz_admin.validation import PackageValidationError, validate_question
+
+
+class _AutoHeightEdit(QPlainTextEdit):
+    """Многострочное поле, растущее по содержимому (до 6 строк): длинный вариант виден целиком."""
+
+    MAX_LINES = 6
+
+    def __init__(self, text: str = "") -> None:
+        super().__init__()
+        self.setPlainText(text)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.textChanged.connect(self._fit)
+
+    def text(self) -> str:
+        return self.toPlainText()
+
+    def _fit(self) -> None:
+        lines = max(1, min(self.MAX_LINES, round(self.document().size().height())))
+        extra = max(self.height() - self.viewport().height(), 18)
+        margin = int(self.document().documentMargin() * 2)
+        self.setFixedHeight(lines * self.fontMetrics().lineSpacing() + margin + extra)
+
+    def showEvent(self, event) -> None:
+        super().showEvent(event)
+        self._fit()
+
+    def resizeEvent(self, event) -> None:
+        super().resizeEvent(event)
+        if event.oldSize().width() != event.size().width():
+            self._fit()
 
 
 class _OptionRow(QWidget):
@@ -38,20 +70,21 @@ class _OptionRow(QWidget):
         super().__init__()
         row = QHBoxLayout(self)
         row.setContentsMargins(0, 0, 0, 0)
-        self.correct = QCheckBox()
-        self.correct.setToolTip("Правильный вариант")
+        row.setSpacing(10)
+        self.correct = QCheckBox("Верный")
+        self.correct.setToolTip("Отметьте, если этот вариант — правильный ответ")
         self.correct.setChecked(option.is_correct)
-        self.text = QLineEdit(option.text)
-        self.text.setPlaceholderText("Текст варианта")
+        self.text = _AutoHeightEdit(option.text)
+        self.text.setPlaceholderText("Текст варианта ответа")
         self.remove_btn = QToolButton()
         self.remove_btn.setObjectName("removeOption")
-        self.remove_btn.setText("✕")
-        self.remove_btn.setToolTip("Удалить вариант")
-        row.addWidget(self.correct)
+        self.remove_btn.setText("Удалить")
+        self.remove_btn.setToolTip("Удалить этот вариант")
+        row.addWidget(self.correct, alignment=Qt.AlignmentFlag.AlignTop)
         row.addWidget(self.text, stretch=1)
-        row.addWidget(self.remove_btn)
+        row.addWidget(self.remove_btn, alignment=Qt.AlignmentFlag.AlignTop)
         self.correct.toggled.connect(lambda checked: self.toggled.emit(self, checked))
-        self.text.textEdited.connect(lambda _t: self.edited.emit())
+        self.text.textChanged.connect(self.edited.emit)
         self.remove_btn.clicked.connect(lambda: self.remove_requested.emit(self))
 
 
@@ -68,25 +101,27 @@ class QuestionEditor(QWidget):
 
         layout = QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(10)
         layout.addWidget(self._section("Текст вопроса"))
         self.text_edit = QPlainTextEdit()
-        self.text_edit.setMinimumHeight(90)
+        self.text_edit.setPlaceholderText("Введите вопрос…")
+        self.text_edit.setMinimumHeight(110)
         layout.addWidget(self.text_edit)
 
         type_row = QHBoxLayout()
-        type_row.addWidget(QLabel("Тип ответа:"))
+        type_row.addWidget(QLabel("Сколько ответов верных:"))
         self.type_combo = QComboBox()
-        self.type_combo.addItem("Один правильный", QUESTION_SINGLE)
-        self.type_combo.addItem("Несколько правильных", QUESTION_MULTIPLE)
+        self.type_combo.addItem("Один верный ответ", QUESTION_SINGLE)
+        self.type_combo.addItem("Несколько верных ответов", QUESTION_MULTIPLE)
         type_row.addWidget(self.type_combo)
         type_row.addStretch(1)
         layout.addLayout(type_row)
 
-        layout.addWidget(self._section("Варианты ответа (отметьте правильные)"))
+        layout.addWidget(self._section("Варианты ответа"))
         self.options_host = QVBoxLayout()
-        self.options_host.setSpacing(6)
+        self.options_host.setSpacing(10)
         layout.addLayout(self.options_host)
-        self.add_option_btn = QPushButton("+ Вариант")
+        self.add_option_btn = QPushButton("+ Добавить вариант")
         layout.addWidget(self.add_option_btn, alignment=Qt.AlignmentFlag.AlignLeft)
         self.problems = QLabel()
         self.problems.setObjectName("warn")
@@ -119,6 +154,7 @@ class QuestionEditor(QWidget):
     def _rebuild_rows(self) -> None:
         for row in self._rows:
             self.options_host.removeWidget(row)
+            row.hide()
             row.deleteLater()
         self._rows = []
         if self._draft is None:
@@ -150,6 +186,7 @@ class QuestionEditor(QWidget):
         del self._draft.options[idx]
         self._rows.pop(idx)
         self.options_host.removeWidget(row)
+        row.hide()
         row.deleteLater()
         self._sync()
 
@@ -220,28 +257,50 @@ class QuestionsPanel(QWidget):
         self._current = -1
 
         root = QHBoxLayout(self)
-        left = QVBoxLayout()
+        root.setContentsMargins(0, 0, 0, 0)
+        splitter = ResponsiveSplitter(narrow_lines=40, vertical_min_lines=[16, 24])
+        root.addWidget(splitter)
+
+        left_host = QWidget()
+        left = QVBoxLayout(left_host)
+        left.setContentsMargins(0, 0, 8, 0)
+        left.setSpacing(10)
         self.count_label = QLabel()
-        self.count_label.setObjectName("subtitle")
+        self.count_label.setObjectName("sectionTitle")
         left.addWidget(self.count_label)
-        self.list = QListWidget()
+        self.list = RichListWidget()
         left.addWidget(self.list, stretch=1)
         buttons = QHBoxLayout()
-        self.add_btn = QPushButton("+ Вопрос")
-        self.up_btn = QPushButton("↑")
-        self.down_btn = QPushButton("↓")
+        buttons.setSpacing(8)
+        self.add_btn = QPushButton("+ Добавить вопрос")
+        self.up_btn = QPushButton("↑ Выше")
+        self.down_btn = QPushButton("↓ Ниже")
         self.del_btn = QPushButton("Удалить")
         self.del_btn.setObjectName("danger")
-        for b in (self.add_btn, self.up_btn, self.down_btn, self.del_btn):
+        left.addWidget(self.add_btn)
+        for b in (self.up_btn, self.down_btn):
             buttons.addWidget(b)
         left.addLayout(buttons)
+        left.addWidget(self.del_btn)
         self.save_btn = QPushButton("Сохранить вопросы")
         self.save_btn.setObjectName("primary")
         left.addWidget(self.save_btn)
-        root.addLayout(left, stretch=2)
+        self.save_state = QLabel()
+        self.save_state.setObjectName("hint")
+        self.save_state.setWordWrap(True)
+        left.addWidget(self.save_state)
+        left_host.setMinimumWidth(300)
+        splitter.addWidget(left_host)
 
         self.editor = QuestionEditor()
-        root.addWidget(self.editor, stretch=3)
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setFrameShape(QScrollArea.Shape.NoFrame)
+        scroll.setWidget(self.editor)
+        scroll.setMinimumWidth(360)
+        splitter.addWidget(scroll)
+        splitter.setStretchFactor(0, 2)
+        splitter.setStretchFactor(1, 3)
 
         self.list.currentRowChanged.connect(self._on_row)
         self.add_btn.clicked.connect(self._add)
@@ -287,18 +346,25 @@ class QuestionsPanel(QWidget):
 
     # --- список ----------------------------------------------------------
 
-    def _label(self, idx: int, q: QuestionDraft) -> str:
+    def _row_texts(self, idx: int, q: QuestionDraft) -> tuple[str, str, bool]:
         text = " ".join((q.text or "").split()) or "(пустой вопрос)"
-        mark = "⚠ " if validate_question(q) else ""
-        return f"{mark}{idx}. {text[:70]}"
+        if len(text) > 140:
+            text = text[:137] + "…"
+        invalid = bool(validate_question(q))
+        kind = "несколько верных" if q.question_type == QUESTION_MULTIPLE else "один верный"
+        details = f"{kind} · вариантов: {len(q.options)}"
+        if invalid:
+            details += " · требует доработки"
+        return f"{idx}. {text}", details, invalid
 
     def _refresh_list(self, select: int) -> None:
         self.list.blockSignals(True)
         self.list.clear()
         for i, q in enumerate(self._drafts, start=1):
-            self.list.addItem(self._label(i, q))
+            title, details, invalid = self._row_texts(i, q)
+            add_rich_item(self.list, title, details, warn=invalid)
         self.list.blockSignals(False)
-        self.count_label.setText(f"Вопросов: {len(self._drafts)}")
+        self._refresh_count()
         if select >= 0 and self._drafts:
             select = min(select, len(self._drafts) - 1)
             self.list.setCurrentRow(select)
@@ -308,6 +374,9 @@ class QuestionsPanel(QWidget):
             self._current = -1
             self.editor.set_question(None)
         self._update_buttons()
+
+    def _refresh_count(self) -> None:
+        self.count_label.setText(f"Вопросов: {len(self._drafts)}")
 
     def _on_row(self, row: int) -> None:
         self._current = row
@@ -319,7 +388,11 @@ class QuestionsPanel(QWidget):
         if 0 <= self._current < len(self._drafts):
             item = self.list.item(self._current)
             if item is not None:
-                item.setText(self._label(self._current + 1, self._drafts[self._current]))
+                title, details, invalid = self._row_texts(
+                    self._current + 1, self._drafts[self._current]
+                )
+                update_rich_item(item, title, details, warn=invalid)
+                self.list.scheduleDelayedItemsLayout()
         self._update_buttons()
 
     def _add(self) -> None:
@@ -351,3 +424,9 @@ class QuestionsPanel(QWidget):
         self.up_btn.setEnabled(has and self._current > 0)
         self.down_btn.setEnabled(has and self._current < len(self._drafts) - 1)
         self.save_btn.setEnabled(self._dirty)
+        self.save_btn.setText("Сохранить вопросы" if self._dirty else "Всё сохранено")
+        self.save_state.setText(
+            "Есть несохранённые изменения — нажмите «Сохранить вопросы»."
+            if self._dirty
+            else ""
+        )

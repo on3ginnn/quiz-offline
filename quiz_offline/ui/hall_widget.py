@@ -6,6 +6,7 @@ from PyQt6.QtCore import Qt, pyqtSignal
 from PyQt6.QtWidgets import (
     QAbstractItemView,
     QHeaderView,
+    QLabel,
     QMessageBox,
     QPushButton,
     QTableWidget,
@@ -28,8 +29,8 @@ _HALL_COLUMNS = [
     "Попыток",
     "Дата",
     "Время",
-    "Последняя",
-    "Лучшая",
+    "Последняя (% / оценка)",
+    "Лучшая (% / оценка)",
 ]
 
 
@@ -48,7 +49,8 @@ class HallWidget(QWidget):
         self.header = PageHeader(
             self,
             on_back=self.back_home.emit,
-            back_tooltip="На главную",
+            back_tooltip="Вернуться к списку комнат",
+            back_text="← К комнатам",
         )
         layout.addWidget(self.header)
 
@@ -63,13 +65,14 @@ class HallWidget(QWidget):
         header.setStretchLastSection(False)
         header.setDefaultAlignment(Qt.AlignmentFlag.AlignLeft)
         header.setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
-        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Interactive)
+        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
         header.setSectionResizeMode(2, QHeaderView.ResizeMode.ResizeToContents)
         header.setSectionResizeMode(3, QHeaderView.ResizeMode.ResizeToContents)
         header.setSectionResizeMode(4, QHeaderView.ResizeMode.ResizeToContents)
-        header.setSectionResizeMode(5, QHeaderView.ResizeMode.Stretch)
-        header.setSectionResizeMode(6, QHeaderView.ResizeMode.Stretch)
-        self.table.setColumnWidth(1, 200)
+        header.setSectionResizeMode(5, QHeaderView.ResizeMode.ResizeToContents)
+        header.setSectionResizeMode(6, QHeaderView.ResizeMode.ResizeToContents)
+        self.table.setAlternatingRowColors(True)
+        self.table.verticalHeader().setDefaultSectionSize(48)
         self.table.verticalHeader().setVisible(False)
         self.table.setSelectionBehavior(
             QTableWidget.SelectionBehavior.SelectRows
@@ -79,6 +82,15 @@ class HallWidget(QWidget):
             QAbstractItemView.ScrollMode.ScrollPerPixel
         )
         layout.addWidget(self.table, stretch=1)
+
+        self.empty_label = QLabel(
+            "Пока никто не проходил этот тест.\n"
+            "Нажмите «Начать попытку», чтобы пройти его первым."
+        )
+        self.empty_label.setObjectName("subtitle")
+        self.empty_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.empty_label.setWordWrap(True)
+        layout.addWidget(self.empty_label, stretch=1)
 
     def load_room(self, room_public_id: str) -> None:
         self._room_public_id = room_public_id
@@ -97,6 +109,8 @@ class HallWidget(QWidget):
 
         rows = self.storage.list_hall_participants(room_public_id)
         self.table.setRowCount(len(rows))
+        self.table.setVisible(bool(rows))
+        self.empty_label.setVisible(not rows)
         for i, row in enumerate(rows):
             self.table.setItem(i, 0, QTableWidgetItem(str(i + 1)))
             self.table.setItem(i, 1, QTableWidgetItem(row.full_name_display))

@@ -8,6 +8,7 @@ from PyQt6.QtWidgets import (
     QInputDialog,
     QLabel,
     QPushButton,
+    QScrollArea,
     QTabWidget,
     QVBoxLayout,
     QWidget,
@@ -31,24 +32,34 @@ class QuizEditorWidget(QWidget):
         self._scenarios: ScenariosTab | None = None
         self._tab_index = 0
 
-        root = QVBoxLayout(self)
-        header = QHBoxLayout()
-        self.back_btn = QPushButton("←")
+        # Вся страница прокручивается: при крупном тексте панели не сжимаются
+        outer = QVBoxLayout(self)
+        outer.setContentsMargins(0, 0, 0, 0)
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        scroll.setFrameShape(QScrollArea.Shape.NoFrame)
+        inner = QWidget()
+        scroll.setWidget(inner)
+        outer.addWidget(scroll)
+
+        root = QVBoxLayout(inner)
+        root.setContentsMargins(0, 0, 8, 0)
+        root.setSpacing(12)
+        top = QHBoxLayout()
+        self.back_btn = QPushButton("← К списку тестов")
         self.back_btn.setObjectName("back")
-        self.back_btn.setFixedSize(40, 40)
-        self.back_btn.setToolTip("К списку тестов")
-        titles = QVBoxLayout()
+        self.rename_btn = QPushButton("Переименовать тест")
+        top.addWidget(self.back_btn)
+        top.addStretch(1)
+        top.addWidget(self.rename_btn)
+        root.addLayout(top)
         self.title_label = QLabel()
         self.title_label.setObjectName("pageTitle")
+        self.title_label.setWordWrap(True)
         self.subtitle_label = QLabel()
         self.subtitle_label.setObjectName("subtitle")
-        titles.addWidget(self.title_label)
-        titles.addWidget(self.subtitle_label)
-        self.rename_btn = QPushButton("Переименовать")
-        header.addWidget(self.back_btn)
-        header.addLayout(titles, stretch=1)
-        header.addWidget(self.rename_btn)
-        root.addLayout(header)
+        root.addWidget(self.title_label)
+        root.addWidget(self.subtitle_label)
 
         self.tabs = QTabWidget()
         root.addWidget(self.tabs, stretch=1)
@@ -66,7 +77,7 @@ class QuizEditorWidget(QWidget):
         composite = quiz.kind == QUIZ_COMPOSITE
         self.title_label.setText(quiz.title)
         self.subtitle_label.setText(
-            "Мультитест: вопросы лежат в темах" if composite else "Обычный тест"
+            "Мультитест: вопросы лежат в темах. Для каждой темы можно задать квоту в сценарии." if composite else "Обычный тест: один список вопросов."
         )
         self.tabs.blockSignals(True)
         while self.tabs.count():

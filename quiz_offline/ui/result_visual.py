@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-OUTCOME_FAIL = "#D32F2F"
-OUTCOME_WARN = "#F57C00"
-OUTCOME_OK = "#2E7D32"
-OUTCOME_FAIL_BG = "#fdecea"
-OUTCOME_WARN_BG = "#fff8e1"
-OUTCOME_OK_BG = "#e8f5e9"
+OUTCOME_FAIL = "#B3261E"
+OUTCOME_WARN = "#9A5200"
+OUTCOME_OK = "#1E7B45"
+OUTCOME_FAIL_BG = "#FCEAE8"
+OUTCOME_WARN_BG = "#FFF3E0"
+OUTCOME_OK_BG = "#E6F4EA"
 
 
 @dataclass(frozen=True)

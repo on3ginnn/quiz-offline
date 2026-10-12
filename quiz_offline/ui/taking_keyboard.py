@@ -23,7 +23,7 @@ def build_taking_focus_chain(
     prev_btn: QWidget,
     clear_btn: QWidget,
 ) -> list[QWidget]:
-    """Порядок: варианты → Следующий → Назад → Очистить."""
+    """Порядок: варианты → Далее → Назад → Очистить."""
     chain: list[QWidget] = []
     for btn in option_buttons:
         if is_widget_focusable(btn):

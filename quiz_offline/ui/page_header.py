@@ -24,42 +24,43 @@ class PageHeader(QWidget):
         *,
         on_back: Callable[[], None] | None = None,
         back_tooltip: str = "Назад",
+        back_text: str = "← Назад",
     ) -> None:
         super().__init__(parent)
         self._on_back = on_back
 
-        row = QHBoxLayout(self)
-        row.setContentsMargins(0, 0, 0, 0)
-        row.setSpacing(8)
+        col = QVBoxLayout(self)
+        col.setContentsMargins(0, 0, 0, 0)
+        col.setSpacing(10)
 
-        self.back_btn = QPushButton("←")
+        # Верхняя строка: «назад» слева, действие справа — заголовок получает всю ширину
+        top = QHBoxLayout()
+        top.setContentsMargins(0, 0, 0, 0)
+        top.setSpacing(12)
+        self.back_btn = QPushButton(back_text)
         self.back_btn.setObjectName("back")
         self.back_btn.setToolTip(back_tooltip)
-        self.back_btn.setFixedSize(40, 40)
         self.back_btn.clicked.connect(self._handle_back)
         self.back_btn.setVisible(on_back is not None)
-        row.addWidget(self.back_btn, alignment=Qt.AlignmentFlag.AlignTop)
-
-        titles = QVBoxLayout()
-        titles.setContentsMargins(0, 0, 0, 0)
-        titles.setSpacing(2)
-        self.title_label = QLabel()
-        self.title_label.setObjectName("pageTitle")
-        self.title_label.setWordWrap(True)
-        titles.addWidget(self.title_label)
-        self.meta_badges = MetaBadgesRow()
-        titles.addWidget(self.meta_badges)
-        self.subtitle_label = QLabel()
-        self.subtitle_label.setObjectName("subtitle")
-        self.subtitle_label.setWordWrap(True)
-        titles.addWidget(self.subtitle_label)
-        row.addLayout(titles, stretch=1)
-
+        top.addWidget(self.back_btn)
+        top.addStretch(1)
         self.trailing_host = QWidget()
         self.trailing_layout = QHBoxLayout(self.trailing_host)
         self.trailing_layout.setContentsMargins(0, 0, 0, 0)
         self.trailing_layout.setSpacing(8)
-        row.addWidget(self.trailing_host, alignment=Qt.AlignmentFlag.AlignTop)
+        top.addWidget(self.trailing_host)
+        col.addLayout(top)
+
+        self.title_label = QLabel()
+        self.title_label.setObjectName("pageTitle")
+        self.title_label.setWordWrap(True)
+        col.addWidget(self.title_label)
+        self.meta_badges = MetaBadgesRow()
+        col.addWidget(self.meta_badges)
+        self.subtitle_label = QLabel()
+        self.subtitle_label.setObjectName("subtitle")
+        self.subtitle_label.setWordWrap(True)
+        col.addWidget(self.subtitle_label)
 
     def _handle_back(self) -> None:
         if self._on_back is not None:

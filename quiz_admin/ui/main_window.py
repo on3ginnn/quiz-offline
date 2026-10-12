@@ -2,18 +2,26 @@
 
 from __future__ import annotations
 
-from PyQt6.QtWidgets import QMainWindow, QStackedWidget, QVBoxLayout, QWidget
+from PyQt6.QtWidgets import (
+    QHBoxLayout,
+    QMainWindow,
+    QStackedWidget,
+    QVBoxLayout,
+    QWidget,
+)
 
 from quiz_admin.storage import AdminStorage
 from quiz_admin.ui.library_widget import LibraryWidget
 from quiz_admin.ui.quiz_editor import QuizEditorWidget
+from quiz_admin.ui.scale_bar import ScaleBar
 
 
 class MainWindow(QMainWindow):
     def __init__(self, storage: AdminStorage) -> None:
         super().__init__()
         self.setWindowTitle("Quiz Admin — конструктор тестов")
-        self.resize(1100, 740)
+        self.resize(1280, 800)
+        self.setMinimumSize(900, 600)
         self._storage = storage
 
         self.library = LibraryWidget(storage)
@@ -24,8 +32,14 @@ class MainWindow(QMainWindow):
 
         host = QWidget()
         layout = QVBoxLayout(host)
-        layout.setContentsMargins(24, 20, 24, 20)
-        layout.addWidget(self.stack)
+        layout.setContentsMargins(28, 12, 28, 20)
+        layout.setSpacing(8)
+        top_bar = QHBoxLayout()
+        top_bar.addStretch(1)
+        self.scale_bar = ScaleBar()
+        top_bar.addWidget(self.scale_bar)
+        layout.addLayout(top_bar)
+        layout.addWidget(self.stack, stretch=1)
         self.setCentralWidget(host)
 
         self.library.open_requested.connect(self._open_quiz)

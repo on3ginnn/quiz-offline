@@ -4,16 +4,17 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 
-from PyQt6.QtCore import QEvent, Qt, QSize, QTimer, pyqtSignal
+from PyQt6.QtCore import QEvent, Qt, QTimer, pyqtSignal
 from PyQt6.QtWidgets import (
     QButtonGroup,
     QFrame,
     QHBoxLayout,
     QLabel,
     QMessageBox,
+    QProgressBar,
+    QScrollArea,
     QPushButton,
     QSizePolicy,
-    QStyle,
     QVBoxLayout,
     QWidget,
 )
@@ -26,6 +27,7 @@ from quiz_offline.storage import Storage
 from quiz_offline.ui.message_boxes import ask_yes_no
 from quiz_offline.ui.page_header import PageHeader
 from quiz_offline.ui.qt_helpers import is_checkbox_checked
+from quiz_offline.ui.theme import MAX_CONTENT_WIDTH
 from quiz_offline.ui.taking_keyboard import (
     build_taking_focus_chain,
     move_focus_in_chain,
@@ -62,10 +64,17 @@ class TakingWidget(QWidget):
         self._timer.setInterval(1000)
         self._timer.timeout.connect(self._tick)
 
-        outer = QVBoxLayout(self)
-        outer.setSpacing(12)
-        # Контент прижат к верху; лишняя высота окна — только снизу
-        outer.setAlignment(Qt.AlignmentFlag.AlignTop)
+        # Контент центрирован и ограничен по ширине — строки читаются на любом экране
+        root = QHBoxLayout(self)
+        root.setContentsMargins(0, 0, 0, 0)
+        content = QWidget()
+        content.setMaximumWidth(MAX_CONTENT_WIDTH)
+        root.addStretch(1)
+        root.addWidget(content, stretch=100)
+        root.addStretch(1)
+        outer = QVBoxLayout(content)
+        outer.setContentsMargins(0, 0, 0, 0)
+        outer.setSpacing(14)
 
         self.finish_btn = QPushButton("Завершить попытку")
         self.finish_btn.setObjectName("textAction")
@@ -74,9 +83,12 @@ class TakingWidget(QWidget):
         self.header = PageHeader(
             self,
             on_back=self._confirm_leave,
-            back_tooltip="В зал",
+            back_tooltip="Прервать попытку и вернуться в зал",
+            back_text="✕ Выйти",
         )
         self.header.set_trailing(self.finish_btn)
+        # Во время теста крупный заголовок не нужен — больше места под вопрос
+        self.header.title_label.setObjectName("sectionTitle")
         self.header.set_meta_badges([])
         self.header.setSizePolicy(
             QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Maximum
@@ -103,15 +115,19 @@ class TakingWidget(QWidget):
         )
         outer.addLayout(progress_row)
 
+        self.progress_bar = QProgressBar()
+        self.progress_bar.setTextVisible(False)
+        outer.addWidget(self.progress_bar)
+
         self.question_card = QFrame()
         self.question_card.setObjectName("questionCard")
         self.question_card.setAutoFillBackground(False)
         self.question_card.setSizePolicy(
-            QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Maximum
+            QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum
         )
         card_layout = QVBoxLayout(self.question_card)
-        card_layout.setContentsMargins(16, 12, 16, 12)
-        card_layout.setSpacing(12)
+        card_layout.setContentsMargins(24, 20, 24, 20)
+        card_layout.setSpacing(16)
         self.question_label = QLabel()
         self.question_label.setObjectName("questionText")
         self.question_label.setWordWrap(True)
@@ -123,22 +139,30 @@ class TakingWidget(QWidget):
         )
         card_layout.addWidget(self.question_label)
         self.options_container = QVBoxLayout()
-        self.options_container.setSpacing(6)
+        self.options_container.setSpacing(10)
         card_layout.addLayout(self.options_container)
-        outer.addWidget(self.question_card)
+        self.card_scroll = QScrollArea()
+        self.card_scroll.setWidgetResizable(True)
+        self.card_scroll.setFrameShape(QFrame.Shape.NoFrame)
+        self.card_scroll.setHorizontalScrollBarPolicy(
+            Qt.ScrollBarPolicy.ScrollBarAlwaysOff
+        )
+        scroll_host = QWidget()
+        scroll_col = QVBoxLayout(scroll_host)
+        scroll_col.setContentsMargins(0, 0, 8, 0)
+        scroll_col.addWidget(self.question_card)
+        scroll_col.addStretch(1)
+        self.card_scroll.setWidget(scroll_host)
+        outer.addWidget(self.card_scroll, stretch=1)
 
         nav = QHBoxLayout()
         nav.setSpacing(10)
-        self.prev_btn = QPushButton()
+        self.prev_btn = QPushButton("← Назад")
         self.prev_btn.setObjectName("navIcon")
-        self.prev_btn.setIcon(
-            self.style().standardIcon(QStyle.StandardPixmap.SP_ArrowBack)
-        )
-        self.prev_btn.setIconSize(QSize(22, 22))
-        self.prev_btn.setToolTip("Назад")
+        self.prev_btn.setToolTip("К предыдущему вопросу")
         self.prev_btn.clicked.connect(self._prev)
         nav.addWidget(self.prev_btn)
-        self.next_btn = QPushButton("Следующий →")
+        self.next_btn = QPushButton("Далее →")
         self.next_btn.setObjectName("primary")
         self.next_btn.clicked.connect(self._next)
         nav.addWidget(self.next_btn)
@@ -149,7 +173,6 @@ class TakingWidget(QWidget):
         nav.addWidget(self.clear_btn)
         nav.addStretch()
         outer.addLayout(nav)
-        outer.addStretch(1)
 
         for btn in (self.prev_btn, self.next_btn, self.clear_btn):
             btn.installEventFilter(self)
@@ -163,8 +186,7 @@ class TakingWidget(QWidget):
         w = self.width()
         if w <= 0:
             return
-        outer_m = self.layout().contentsMargins()
-        available = w - outer_m.left() - outer_m.right()
+        available = min(w, MAX_CONTENT_WIDTH) - 16
         margins = self.question_card.layout().contentsMargins()
         inner_w = max(120, available - margins.left() - margins.right())
         self.question_label.setMaximumWidth(inner_w)
@@ -188,7 +210,7 @@ class TakingWidget(QWidget):
             chain[0].setFocus()
 
     def eventFilter(self, obj, event) -> bool:
-        # Стрелки ↑↓ — единая цепочка: варианты → Следующий → Назад → Очистить
+        # Стрелки ↑↓ — единая цепочка: варианты → Далее → Назад → Очистить
         if event.type() == QEvent.Type.KeyPress:
             key = event.key()
             if key in (Qt.Key.Key_Down, Qt.Key.Key_Up):
@@ -248,6 +270,12 @@ class TakingWidget(QWidget):
     def _update_timer_label(self) -> None:
         m, s = divmod(max(0, self._remaining_sec), 60)
         self.timer_label.setText(f"⏱ {m:02d}:{s:02d}")
+        urgent = self._remaining_sec <= 60
+        if self.timer_label.property("urgent") != urgent:
+            self.timer_label.setProperty("urgent", urgent)
+            style = self.timer_label.style()
+            style.unpolish(self.timer_label)
+            style.polish(self.timer_label)
 
     def _current_question_id(self) -> int | None:
         if not self._layout:
@@ -267,12 +295,14 @@ class TakingWidget(QWidget):
         self.progress_label.setText(
             f"Вопрос {self._index + 1} из {len(self._layout)}"
         )
+        self.progress_bar.setRange(0, len(self._layout))
+        self.progress_bar.setValue(self._index + 1)
         self.question_label.setText(q.text)
         self.prev_btn.setEnabled(self._index > 0)
         self.next_btn.setText(
             "Завершить тест"
             if self._index >= len(self._layout) - 1
-            else "Следующий →"
+            else "Далее →"
         )
 
         while self.options_container.count():

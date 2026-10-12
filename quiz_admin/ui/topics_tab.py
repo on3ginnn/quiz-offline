@@ -7,8 +7,6 @@ from PyQt6.QtWidgets import (
     QHBoxLayout,
     QInputDialog,
     QLabel,
-    QListWidget,
-    QListWidgetItem,
     QPushButton,
     QVBoxLayout,
     QWidget,
@@ -19,6 +17,8 @@ from quiz_admin.models import QUIZ_SINGLE, Quiz
 from quiz_admin.storage import AdminStorage
 from quiz_admin.ui.dialogs import PickQuizzesDialog, ask_yes_no, show_errors
 from quiz_admin.ui.questions_panel import QuestionsPanel
+from quiz_admin.ui.responsive_splitter import ResponsiveSplitter
+from quiz_admin.ui.rich_list import RichListWidget, add_rich_item, update_rich_item
 
 
 class TopicsTab(QWidget):
@@ -30,38 +30,49 @@ class TopicsTab(QWidget):
         self._topic_id: int | None = None
 
         root = QHBoxLayout(self)
-        left = QVBoxLayout()
+        root.setContentsMargins(0, 0, 0, 0)
+        splitter = ResponsiveSplitter(narrow_lines=58, vertical_min_lines=[14, 40])
+        root.addWidget(splitter)
+
+        left_host = QWidget()
+        left = QVBoxLayout(left_host)
+        left.setContentsMargins(0, 0, 8, 0)
+        left.setSpacing(10)
         title = QLabel("Темы")
         title.setObjectName("sectionTitle")
         left.addWidget(title)
-        self.list = QListWidget()
+        self.list = RichListWidget()
         left.addWidget(self.list, stretch=1)
         self.add_btn = QPushButton("+ Новая тема")
         self.from_btn = QPushButton("+ Тема из теста…")
         self.rename_btn = QPushButton("Переименовать")
-        self.up_btn = QPushButton("↑")
-        self.down_btn = QPushButton("↓")
-        self.del_btn = QPushButton("Удалить")
+        self.up_btn = QPushButton("↑ Выше")
+        self.down_btn = QPushButton("↓ Ниже")
+        self.del_btn = QPushButton("Удалить тему")
         self.del_btn.setObjectName("danger")
         left.addWidget(self.add_btn)
         left.addWidget(self.from_btn)
         arrows = QHBoxLayout()
+        arrows.setSpacing(8)
         arrows.addWidget(self.up_btn)
         arrows.addWidget(self.down_btn)
         left.addLayout(arrows)
         left.addWidget(self.rename_btn)
         left.addWidget(self.del_btn)
-        left_host = QWidget()
-        left_host.setLayout(left)
-        left_host.setFixedWidth(260)
-        root.addWidget(left_host)
+        left_host.setMinimumWidth(230)
+        splitter.addWidget(left_host)
 
-        self.panel_host = QVBoxLayout()
+        right_host = QWidget()
+        self.panel_host = QVBoxLayout(right_host)
+        self.panel_host.setContentsMargins(8, 0, 0, 0)
         self.placeholder = QLabel("Добавьте тему, чтобы редактировать её вопросы.")
         self.placeholder.setObjectName("subtitle")
         self.placeholder.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.panel_host.addWidget(self.placeholder)
-        root.addLayout(self.panel_host, stretch=1)
+        splitter.addWidget(right_host)
+        splitter.setStretchFactor(0, 1)
+        splitter.setStretchFactor(1, 4)
+        splitter.setSizes([260, 900])
 
         self.add_btn.clicked.connect(self._add)
         self.from_btn.clicked.connect(self._add_from_quiz)
@@ -83,9 +94,12 @@ class TopicsTab(QWidget):
         target_row = -1
         for row, topic in enumerate(self._storage.list_topics(self._quiz.id)):
             count = self._storage.count_questions(self._quiz.id, topic.id)
-            item = QListWidgetItem(f"{topic.topic_order}. {topic.title} ({count})")
-            item.setData(Qt.ItemDataRole.UserRole, topic.id)
-            self.list.addItem(item)
+            add_rich_item(
+                self.list,
+                f"{topic.topic_order}. {topic.title}",
+                f"вопросов: {count}",
+                data=topic.id,
+            )
             if topic.id == select_id:
                 target_row = row
         if target_row < 0 and self.list.count():
@@ -117,7 +131,9 @@ class TopicsTab(QWidget):
             topic = self._storage.get_topic(item.data(Qt.ItemDataRole.UserRole))
             if topic:
                 count = self._storage.count_questions(self._quiz.id, topic.id)
-                item.setText(f"{topic.topic_order}. {topic.title} ({count})")
+                update_rich_item(
+                    item, f"{topic.topic_order}. {topic.title}", f"вопросов: {count}"
+                )
 
     def _on_row(self, row: int) -> None:
         new_id = self._current_id()

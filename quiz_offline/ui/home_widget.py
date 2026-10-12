@@ -35,27 +35,28 @@ class _EmptyRoomsState(QWidget):
         self.setObjectName("emptyRoomsState")
         layout = QVBoxLayout(self)
         layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        layout.setSpacing(12)
+        layout.setContentsMargins(32, 40, 32, 40)
+        layout.setSpacing(14)
 
         icon = QLabel("📂")
         icon.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        icon.setStyleSheet("font-size: 40px; background: transparent;")
+        icon.setObjectName("roomCardIcon")
         layout.addWidget(icon)
 
-        title = QLabel("Пока нет комнат")
+        title = QLabel("Пока нет ни одной комнаты")
         title.setObjectName("sectionTitle")
         title.setAlignment(Qt.AlignmentFlag.AlignCenter)
         layout.addWidget(title)
 
         hint = QLabel(
-            "Выгрузите пакет комнаты (JSON) с сайта и добавьте его через кнопку ниже."
+            "Комната — это тест с настройками прохождения. Нажмите кнопку ниже и выберите файл комнаты (JSON), который вам передал преподаватель."
         )
         hint.setObjectName("subtitle")
         hint.setWordWrap(True)
         hint.setAlignment(Qt.AlignmentFlag.AlignCenter)
         layout.addWidget(hint)
 
-        add_btn = QPushButton("Добавить комнату")
+        add_btn = QPushButton("+ Добавить комнату")
         add_btn.setObjectName("cta")
         add_btn.clicked.connect(self.add_clicked.emit)
         btn_row = QHBoxLayout()
@@ -76,21 +77,21 @@ class HomeWidget(QWidget):
         self._package_ui_cache: dict[str, RoomCardMeta] = {}
 
         layout = QVBoxLayout(self)
-        layout.setSpacing(12)
+        layout.setSpacing(14)
 
         title = QLabel("Тестирование")
         title.setObjectName("pageTitle")
         layout.addWidget(title)
 
         self.subtitle = QLabel(
-            "Добавьте пакет комнаты (JSON с сайта), чтобы начать прохождение."
+            "Выберите комнату и нажмите «Войти», чтобы пройти тест."
         )
         self.subtitle.setObjectName("subtitle")
         self.subtitle.setWordWrap(True)
         layout.addWidget(self.subtitle)
 
         section_row = QHBoxLayout()
-        section = QLabel("Добавленные комнаты")
+        section = QLabel("Ваши комнаты")
         section.setObjectName("sectionTitle")
         section_row.addWidget(section)
         section_row.addStretch()
@@ -135,8 +136,7 @@ class HomeWidget(QWidget):
         has_rooms = len(self._all_rooms) > 0
         self.empty_state.setVisible(not has_rooms)
         self.scroll.setVisible(has_rooms)
-        self.subtitle.setVisible(not has_rooms)
-        self.search_edit.setVisible(len(self._all_rooms) >= 3)
+        self.search_edit.setVisible(len(self._all_rooms) >= 2)
         if not self.search_edit.isVisible():
             self.search_edit.clear()
         self._rebuild_room_cards()
@@ -204,7 +204,7 @@ class HomeWidget(QWidget):
         return Path(path)
 
     def _on_add_room(self) -> None:
-        path = self._pick_json_file("Выберите пакет комнаты")
+        path = self._pick_json_file("Выберите файл комнаты")
         if path is None:
             return
         try:
@@ -233,7 +233,7 @@ class HomeWidget(QWidget):
         self.rooms_changed.emit()
 
     def _on_update_room(self, room_public_id: str) -> None:
-        path = self._pick_json_file("Выберите новый пакет комнаты")
+        path = self._pick_json_file("Выберите новый файл комнаты")
         if path is None:
             return
         try:

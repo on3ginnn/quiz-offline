@@ -10,7 +10,6 @@ from PyQt6.QtWidgets import (
     QLabel,
     QLineEdit,
     QListWidget,
-    QListWidgetItem,
     QMessageBox,
     QVBoxLayout,
     QWidget,
@@ -18,6 +17,7 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt
 
 from quiz_admin.models import QUIZ_COMPOSITE, QUIZ_SINGLE, QuizSummary
+from quiz_admin.ui.rich_list import RichListWidget, add_rich_item
 
 
 def show_errors(parent: QWidget | None, title: str, errors: list[str]) -> None:
@@ -65,9 +65,11 @@ class NewQuizDialog(QDialog):
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent)
         self.setWindowTitle("Новый тест")
-        self.setMinimumWidth(380)
+        self.setMinimumWidth(520)
         form = QFormLayout()
+        form.setVerticalSpacing(12)
         self.title_edit = QLineEdit()
+        self.title_edit.setPlaceholderText("Например: Сестринское дело")
         self.kind_combo = QComboBox()
         self.kind_combo.addItem("Обычный тест", QUIZ_SINGLE)
         self.kind_combo.addItem("Мультитест (несколько тем)", QUIZ_COMPOSITE)
@@ -81,6 +83,8 @@ class NewQuizDialog(QDialog):
         buttons.accepted.connect(self._accept)
         buttons.rejected.connect(self.reject)
         layout = QVBoxLayout(self)
+        layout.setContentsMargins(24, 20, 24, 20)
+        layout.setSpacing(14)
         layout.addLayout(form)
         layout.addWidget(buttons)
 
@@ -107,24 +111,28 @@ class PickQuizzesDialog(QDialog):
     ) -> None:
         super().__init__(parent)
         self.setWindowTitle(title)
-        self.setMinimumSize(420, 380)
+        self.setMinimumSize(560, 460)
         layout = QVBoxLayout(self)
-        layout.addWidget(QLabel(hint))
+        layout.setContentsMargins(24, 20, 24, 20)
+        layout.setSpacing(12)
+        hint_label = QLabel(hint)
+        hint_label.setWordWrap(True)
+        layout.addWidget(hint_label)
         self.title_edit: QLineEdit | None = None
         if ask_title:
             self.title_edit = QLineEdit()
             self.title_edit.setPlaceholderText("Название мультитеста")
             layout.addWidget(self.title_edit)
-        self.list = QListWidget()
+        self.list = RichListWidget()
         if multi:
             self.list.setSelectionMode(QListWidget.SelectionMode.NoSelection)
         for s in summaries:
-            item = QListWidgetItem(f"{s.quiz.title} — вопросов: {s.question_count}")
-            item.setData(Qt.ItemDataRole.UserRole, s.quiz.id)
+            item = add_rich_item(
+                self.list, s.quiz.title, f"вопросов: {s.question_count}", data=s.quiz.id
+            )
             if multi:
                 item.setFlags(item.flags() | Qt.ItemFlag.ItemIsUserCheckable)
                 item.setCheckState(Qt.CheckState.Unchecked)
-            self.list.addItem(item)
         layout.addWidget(self.list, stretch=1)
         buttons = QDialogButtonBox(
             QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
