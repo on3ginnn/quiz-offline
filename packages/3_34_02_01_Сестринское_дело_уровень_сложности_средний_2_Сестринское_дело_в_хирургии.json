@@ -1,0 +1,471 @@
+{
+ "schema_version": 3,
+ "kind": "room_package",
+ "exported_at": "2026-10-12T06:34:07.843869+00:00",
+ "quiz": {
+  "title": "34.02.01 Сестринское дело (уровень сложности — средний) №2",
+  "kind": "single",
+  "questions": [
+   {
+    "text": "Какие признаки характерны для артериальной гипертензии?",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "Головная боль",
+      "is_correct": true
+     },
+     {
+      "text": "Шум в ушах",
+      "is_correct": true
+     },
+     {
+      "text": "Снижение давления",
+      "is_correct": false
+     },
+     {
+      "text": "Головокружение",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Какой симптом характерен для острой сердечной недостаточности?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "Одышка",
+      "is_correct": true
+     },
+     {
+      "text": "Брадикардия",
+      "is_correct": false
+     },
+     {
+      "text": "Гипотермия",
+      "is_correct": false
+     },
+     {
+      "text": "Снижение аппетита",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какой показатель отражает уровень гемоглобина?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "ЭКГ",
+      "is_correct": false
+     },
+     {
+      "text": "Общий анализ крови",
+      "is_correct": true
+     },
+     {
+      "text": "УЗИ",
+      "is_correct": false
+     },
+     {
+      "text": "Рентген",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какие признаки характерны для обезвоживания?",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "Сухость слизистых",
+      "is_correct": true
+     },
+     {
+      "text": "Снижение диуреза",
+      "is_correct": true
+     },
+     {
+      "text": "Повышение массы тела",
+      "is_correct": false
+     },
+     {
+      "text": "Тахикардия",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Как называется воспаление слизистой желудка?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "Гастрит",
+      "is_correct": true
+     },
+     {
+      "text": "Бронхит",
+      "is_correct": false
+     },
+     {
+      "text": "Цистит",
+      "is_correct": false
+     },
+     {
+      "text": "Артрит",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Как называется прибор для измерения артериального давления?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "Термометр",
+      "is_correct": false
+     },
+     {
+      "text": "Тонометр",
+      "is_correct": true
+     },
+     {
+      "text": "Глюкометр",
+      "is_correct": false
+     },
+     {
+      "text": "Пульсоксиметр",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какой пульс считается нормальным у взрослого человека?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "40–50 уд/мин",
+      "is_correct": false
+     },
+     {
+      "text": "60–80 уд/мин",
+      "is_correct": true
+     },
+     {
+      "text": "90–110 уд/мин",
+      "is_correct": false
+     },
+     {
+      "text": "120–140 уд/мин",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какие осложнения могут возникнуть при сахарном диабете?",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "Нефропатия",
+      "is_correct": true
+     },
+     {
+      "text": "Ретинопатия",
+      "is_correct": true
+     },
+     {
+      "text": "Гастрит",
+      "is_correct": false
+     },
+     {
+      "text": "Нейропатия",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Какие мероприятия относятся к базовой сердечно-легочной реанимации?",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "Непрямой массаж сердца",
+      "is_correct": true
+     },
+     {
+      "text": "Искусственная вентиляция легких",
+      "is_correct": true
+     },
+     {
+      "text": "Введение антибиотиков",
+      "is_correct": false
+     },
+     {
+      "text": "Обеспечение проходимости дыхательных путей",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Как называется снижение уровня гемоглобина в крови?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "Анемия",
+      "is_correct": true
+     },
+     {
+      "text": "Гипертония",
+      "is_correct": false
+     },
+     {
+      "text": "Лейкоцитоз",
+      "is_correct": false
+     },
+     {
+      "text": "Тромбоз",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какие пути передачи инфекции существуют?",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "Воздушно-капельный",
+      "is_correct": true
+     },
+     {
+      "text": "Контактный",
+      "is_correct": true
+     },
+     {
+      "text": "Пищевой",
+      "is_correct": true
+     },
+     {
+      "text": "Генетический",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Как называется воспаление легких?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "Гастрит",
+      "is_correct": false
+     },
+     {
+      "text": "Пневмония",
+      "is_correct": true
+     },
+     {
+      "text": "Нефрит",
+      "is_correct": false
+     },
+     {
+      "text": "Гепатит",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какие факторы риска развития инфаркта миокарда?",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "Курение",
+      "is_correct": true
+     },
+     {
+      "text": "Ожирение",
+      "is_correct": true
+     },
+     {
+      "text": "Физическая активность",
+      "is_correct": false
+     },
+     {
+      "text": "Гипертония",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Какой метод используется для измерения температуры тела?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "Тонометрия",
+      "is_correct": false
+     },
+     {
+      "text": "Термометрия",
+      "is_correct": true
+     },
+     {
+      "text": "Пальпация",
+      "is_correct": false
+     },
+     {
+      "text": "Аускультация",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какие действия включает уход за лежачим пациентом?",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "Профилактика пролежней",
+      "is_correct": true
+     },
+     {
+      "text": "Смена положения тела",
+      "is_correct": true
+     },
+     {
+      "text": "Контроль питания",
+      "is_correct": true
+     },
+     {
+      "text": "Игнорирование жалоб пациента",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какой нормальный уровень артериального давления у взрослого человека?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "90/60 мм рт. ст.",
+      "is_correct": false
+     },
+     {
+      "text": "120/80 мм рт. ст.",
+      "is_correct": true
+     },
+     {
+      "text": "140/100 мм рт. ст.",
+      "is_correct": false
+     },
+     {
+      "text": "160/110 мм рт. ст.",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какие симптомы характерны для лихорадки?",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "Повышение температуры",
+      "is_correct": true
+     },
+     {
+      "text": "Озноб",
+      "is_correct": true
+     },
+     {
+      "text": "Потливость",
+      "is_correct": true
+     },
+     {
+      "text": "Снижение температуры",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какой орган наиболее чувствителен к гипоксии?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "Печень",
+      "is_correct": false
+     },
+     {
+      "text": "Головной мозг",
+      "is_correct": true
+     },
+     {
+      "text": "Почки",
+      "is_correct": false
+     },
+     {
+      "text": "Кожа",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какие меры применяются при остановке кровотечения?",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "Наложение жгута",
+      "is_correct": true
+     },
+     {
+      "text": "Давящая повязка",
+      "is_correct": true
+     },
+     {
+      "text": "Массаж сердца",
+      "is_correct": false
+     },
+     {
+      "text": "Приподнятие конечности",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Какие методы диагностики используются для выявления заболеваний легких?",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "Рентгенография",
+      "is_correct": true
+     },
+     {
+      "text": "Спирометрия",
+      "is_correct": true
+     },
+     {
+      "text": "ЭКГ",
+      "is_correct": false
+     },
+     {
+      "text": "КТ",
+      "is_correct": true
+     }
+    ]
+   }
+  ]
+ },
+ "room": {
+  "name": "Сестринское дело в хирургии",
+  "public_id": "8e6c124f-8a34-4237-8f80-5e3af399d747",
+  "time_limit_mode": "manual",
+  "time_limit_minutes": 30,
+  "attempts_unlimited": false,
+  "allowed_attempts": 3,
+  "shuffle_questions": false,
+  "shuffle_options": false,
+  "selection_mode": "per_attempt",
+  "show_results": true,
+  "show_answers": false,
+  "show_correct_answers": false,
+  "grade_3_min_percent": 70,
+  "grade_4_min_percent": 80,
+  "grade_5_min_percent": 90,
+  "grade_attempt_mode": "best",
+  "questions_sample_size": 6
+ },
+ "topic_quotas": []
+}

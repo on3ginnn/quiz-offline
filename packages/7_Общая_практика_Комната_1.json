@@ -1,0 +1,2517 @@
+{
+ "schema_version": 3,
+ "kind": "room_package",
+ "exported_at": "2026-10-12T06:34:08.050548+00:00",
+ "quiz": {
+  "title": "Общая практика",
+  "kind": "single",
+  "questions": [
+   {
+    "text": "Факторы риска гипертонической болезни:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "переохлаждение",
+      "is_correct": false
+     },
+     {
+      "text": "аллергия",
+      "is_correct": false
+     },
+     {
+      "text": "гипохолестеринемия",
+      "is_correct": false
+     },
+     {
+      "text": "стрессы",
+      "is_correct": true
+     },
+     {
+      "text": "ожирение",
+      "is_correct": true
+     },
+     {
+      "text": "гиподинамия",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Характерные симптомы доброкачественной опухоли:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "отсутствие метастазов",
+      "is_correct": true
+     },
+     {
+      "text": "наличие метастазов",
+      "is_correct": false
+     },
+     {
+      "text": "подвижность",
+      "is_correct": true
+     },
+     {
+      "text": "интоксикация",
+      "is_correct": false
+     },
+     {
+      "text": "четкие границы",
+      "is_correct": true
+     },
+     {
+      "text": "быстрый рост",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Сестринское вмешательство при ушибах мягких тканей предполагает:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "наложение фиксирующей повязки",
+      "is_correct": false
+     },
+     {
+      "text": "применение пузыря со льдом",
+      "is_correct": true
+     },
+     {
+      "text": "применение грелки",
+      "is_correct": false
+     },
+     {
+      "text": "постановку согревающего компресса",
+      "is_correct": false
+     },
+     {
+      "text": "прием  анальгетиков",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Ведущие признаки облитерирующего эндартериита:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "гиперхолестеринемия",
+      "is_correct": true
+     },
+     {
+      "text": "отек конечности",
+      "is_correct": true
+     },
+     {
+      "text": "снижение наполнения пульса на тыльной артерии стопы",
+      "is_correct": true
+     },
+     {
+      "text": "образование гематомы",
+      "is_correct": false
+     },
+     {
+      "text": "боли  в конечностях  в покое",
+      "is_correct": false
+     },
+     {
+      "text": "перемежающаяся хромота",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Основные патологические изменения при остеохондрозе происходят в:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "межпозвоночных дисках",
+      "is_correct": true
+     },
+     {
+      "text": "телах позвонков",
+      "is_correct": false
+     },
+     {
+      "text": "межпозвоночных суставах",
+      "is_correct": false
+     },
+     {
+      "text": "связочном аппарате",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Наиболее грозные осложнения язвенной болезни желудка:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "гипогликемия",
+      "is_correct": false
+     },
+     {
+      "text": "перфорация",
+      "is_correct": true
+     },
+     {
+      "text": "кровотечение",
+      "is_correct": true
+     },
+     {
+      "text": "малигнизация",
+      "is_correct": true
+     },
+     {
+      "text": "непроходимость кишечника",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Для профилактики облитерирующего эндартериита пациентам рекомендуют:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "соблюдение гипохолестериновой  диеты",
+      "is_correct": true
+     },
+     {
+      "text": "усиление физической нагрузки",
+      "is_correct": false
+     },
+     {
+      "text": "употребление пищи, богатой животными жирами",
+      "is_correct": false
+     },
+     {
+      "text": "отказ от курения",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Методы ранней диагностики рака легкого:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "флюорография",
+      "is_correct": true
+     },
+     {
+      "text": "исследование мокроты на атипичные клетки",
+      "is_correct": true
+     },
+     {
+      "text": "биопсия",
+      "is_correct": true
+     },
+     {
+      "text": "томография",
+      "is_correct": true
+     },
+     {
+      "text": "бронхография",
+      "is_correct": true
+     },
+     {
+      "text": "биохимический анализ крови",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Сестринское вмешательство при ущемленной пупочной грыже:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "введение обезболивающих средств",
+      "is_correct": false
+     },
+     {
+      "text": "применение пузыря со льдом",
+      "is_correct": true
+     },
+     {
+      "text": "применение грелки",
+      "is_correct": false
+     },
+     {
+      "text": "срочная госпитализация",
+      "is_correct": true
+     },
+     {
+      "text": "вправление грыжевого выпячивания",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Стандарт лабораторного исследования при варикозном расширении вен:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "анализ крови общий",
+      "is_correct": true
+     },
+     {
+      "text": "анализ крови биохимический",
+      "is_correct": false
+     },
+     {
+      "text": "коагулограмма",
+      "is_correct": true
+     },
+     {
+      "text": "анализ крови на стерильность",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Осложнения варикозного расширения вен:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "лимфаденит",
+      "is_correct": false
+     },
+     {
+      "text": "тромбофлебит",
+      "is_correct": true
+     },
+     {
+      "text": "кровотечение из варикозных узлов",
+      "is_correct": true
+     },
+     {
+      "text": "трофические язвы",
+      "is_correct": true
+     },
+     {
+      "text": "облитерирующий эндартериит",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Основные методы гинекологического исследования:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "осмотр наружных половых органов",
+      "is_correct": true
+     },
+     {
+      "text": "влагалищное исследование",
+      "is_correct": true
+     },
+     {
+      "text": "обзорное рентгенографическое  исследование",
+      "is_correct": false
+     },
+     {
+      "text": "УЗИ матки",
+      "is_correct": false
+     },
+     {
+      "text": "осмотр в зеркалах",
+      "is_correct": true
+     },
+     {
+      "text": "гистологическое исследование эндометрия",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Гормональные контрацептивные средства:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "мини-пили",
+      "is_correct": true
+     },
+     {
+      "text": "спермициды",
+      "is_correct": false
+     },
+     {
+      "text": "инъекционные",
+      "is_correct": true
+     },
+     {
+      "text": "имплантаты",
+      "is_correct": true
+     },
+     {
+      "text": "внутриматочные спирали",
+      "is_correct": false
+     },
+     {
+      "text": "комбинированные оральные",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Осложнения применения внутриматочных контрацептивов:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "кровотечение",
+      "is_correct": true
+     },
+     {
+      "text": "перфорация матки",
+      "is_correct": true
+     },
+     {
+      "text": "контактные боли",
+      "is_correct": true
+     },
+     {
+      "text": "заболевания печени",
+      "is_correct": false
+     },
+     {
+      "text": "диспептические явления",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Осложнения применения оральных контрацептивов:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "выкидыши",
+      "is_correct": false
+     },
+     {
+      "text": "тромбозы",
+      "is_correct": true
+     },
+     {
+      "text": "нарушения функции печени",
+      "is_correct": true
+     },
+     {
+      "text": "тошнота, рвота",
+      "is_correct": true
+     },
+     {
+      "text": "увеличение веса",
+      "is_correct": true
+     },
+     {
+      "text": "рак  яичников",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Задачи первичного патронажа к новорожденному:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "консультирование по вопросам планирования семьи",
+      "is_correct": false
+     },
+     {
+      "text": "оценка состояния новорожденного",
+      "is_correct": true
+     },
+     {
+      "text": "консультирование по организации вакцинации",
+      "is_correct": false
+     },
+     {
+      "text": "оценка состояния матери",
+      "is_correct": true
+     },
+     {
+      "text": "оценка социально-бытовых условий",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Профилактика гипогалактии:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "УФО на молочные железы",
+      "is_correct": false
+     },
+     {
+      "text": "фиксирующая повязка на молочную железу",
+      "is_correct": false
+     },
+     {
+      "text": "сцеживание молока после кормления",
+      "is_correct": true
+     },
+     {
+      "text": "соблюдение режима, питания матери",
+      "is_correct": true
+     },
+     {
+      "text": "снятие стрессов",
+      "is_correct": true
+     },
+     {
+      "text": "достаточный сон матери",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Максимальный срок временной нетрудоспособности при неблагоприятном исходе:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "1 месяц",
+      "is_correct": false
+     },
+     {
+      "text": "6 месяцев",
+      "is_correct": false
+     },
+     {
+      "text": "8 месяцев",
+      "is_correct": false
+     },
+     {
+      "text": "4 месяца",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Проявления вестибулярных расстройств у пожилых:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "плохая разборчивость речи",
+      "is_correct": false
+     },
+     {
+      "text": "тошнота",
+      "is_correct": true
+     },
+     {
+      "text": "нарушение равновесия",
+      "is_correct": true
+     },
+     {
+      "text": "ухудшение восприятия звуков",
+      "is_correct": false
+     },
+     {
+      "text": "головокружение",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Основные симптомы сенильной деменции:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "нарушение ориентации",
+      "is_correct": true
+     },
+     {
+      "text": "бред",
+      "is_correct": true
+     },
+     {
+      "text": "нарушение речи",
+      "is_correct": false
+     },
+     {
+      "text": "нарушение восприятия",
+      "is_correct": true
+     },
+     {
+      "text": "нарушение памяти",
+      "is_correct": true
+     },
+     {
+      "text": "судороги",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Основные симптомы глаукомы:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "потеря бинокулярного зрения",
+      "is_correct": false
+     },
+     {
+      "text": "сужение полей зрения",
+      "is_correct": true
+     },
+     {
+      "text": "помутнение хрусталика",
+      "is_correct": false
+     },
+     {
+      "text": "повышение офтальмотонуса",
+      "is_correct": true
+     },
+     {
+      "text": "повышение внутриглазного давления",
+      "is_correct": true
+     },
+     {
+      "text": "сильные головные боли",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Основные симптомы катаракты:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "повышение офтальмотонуса",
+      "is_correct": false
+     },
+     {
+      "text": "потеря бинокулярного зрения",
+      "is_correct": true
+     },
+     {
+      "text": "помутнение хрусталика",
+      "is_correct": true
+     },
+     {
+      "text": "афакия",
+      "is_correct": true
+     },
+     {
+      "text": "слепота",
+      "is_correct": true
+     },
+     {
+      "text": "сужение полей зрения",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Определение I группы инвалидности предполагает:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "предоставление облегченных условий труда",
+      "is_correct": false
+     },
+     {
+      "text": "перевод на работу более низкой квалификации",
+      "is_correct": false
+     },
+     {
+      "text": "освобождение от работы в условиях производства",
+      "is_correct": false
+     },
+     {
+      "text": "необходимость в постоянном постороннем уходе",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Определение II группы инвалидности предполагает:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "предоставление обычных условий труда",
+      "is_correct": false
+     },
+     {
+      "text": "освобождение от работы в условиях производства",
+      "is_correct": true
+     },
+     {
+      "text": "необходимость в постоянном постороннем уходе",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Основные задачи диспансеризации:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "выявления лиц, подлежащих активному врачебному наблюдению",
+      "is_correct": true
+     },
+     {
+      "text": "составление и реализация плана профилактических мероприятий",
+      "is_correct": true
+     },
+     {
+      "text": "снижение заболеваемости с утратой нетрудоспособности",
+      "is_correct": true
+     },
+     {
+      "text": "активная иммунизация населения",
+      "is_correct": false
+     },
+     {
+      "text": "учет лиц, пенсионного возраста",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Клинические симптомы тугоухости:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "ухудшение восприятия звуков",
+      "is_correct": true
+     },
+     {
+      "text": "способность различать интенсивный звук",
+      "is_correct": false
+     },
+     {
+      "text": "плохая разборчивость речи",
+      "is_correct": true
+     },
+     {
+      "text": "улучшение восприятия звуков",
+      "is_correct": false
+     },
+     {
+      "text": "шум в ушах",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Основные симптомы кардиогенного шока:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "резкое повышение артериального давления",
+      "is_correct": false
+     },
+     {
+      "text": "экспираторное удушье",
+      "is_correct": false
+     },
+     {
+      "text": "жгучие боли за грудиной",
+      "is_correct": true
+     },
+     {
+      "text": "нитевидный, слабого наполнения пульс",
+      "is_correct": true
+     },
+     {
+      "text": "резкая бедность кожных покровов, холодный пот",
+      "is_correct": true
+     },
+     {
+      "text": "резкое падение артериального давления",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Вскрытую ампулу с туберкулином можно использовать в течение:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "1  часа",
+      "is_correct": false
+     },
+     {
+      "text": "2-х часов",
+      "is_correct": true
+     },
+     {
+      "text": "3-х часов",
+      "is_correct": false
+     },
+     {
+      "text": "6 часов",
+      "is_correct": false
+     },
+     {
+      "text": "1-х суток",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "При язвенной болезни желудка и 12-перстной кишки рекомендуется включить в рацион:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "салат из свежей капусты",
+      "is_correct": false
+     },
+     {
+      "text": "подсушенный белый хлеб",
+      "is_correct": true
+     },
+     {
+      "text": "сливки",
+      "is_correct": true
+     },
+     {
+      "text": "мясные, рыбные суфле",
+      "is_correct": true
+     },
+     {
+      "text": "супы на слизистых отварах",
+      "is_correct": true
+     },
+     {
+      "text": "картофель-фри",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Пациенту, перенесшему операцию на желудке, рекомендуются блюда:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "капустные котлеты",
+      "is_correct": false
+     },
+     {
+      "text": "сливки",
+      "is_correct": true
+     },
+     {
+      "text": "отварное мясо",
+      "is_correct": false
+     },
+     {
+      "text": "протертые каши",
+      "is_correct": true
+     },
+     {
+      "text": "слизистые супы",
+      "is_correct": true
+     },
+     {
+      "text": "мясное суфле",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Диета при гипертонической болезни предполагает введение в рацион:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "овощных салатов",
+      "is_correct": true
+     },
+     {
+      "text": "копченых продуктов",
+      "is_correct": true
+     },
+     {
+      "text": "соков",
+      "is_correct": false
+     },
+     {
+      "text": "жареной рыбы, мяса",
+      "is_correct": false
+     },
+     {
+      "text": "молочно-кислых продуктов",
+      "is_correct": true
+     },
+     {
+      "text": "отварной рыбы, мяса",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Продукты, замедляющие перистальтику кишечника:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "черничный отвар",
+      "is_correct": true
+     },
+     {
+      "text": "отварное мясо",
+      "is_correct": true
+     },
+     {
+      "text": "свекла",
+      "is_correct": true
+     },
+     {
+      "text": "свежие яблоки",
+      "is_correct": true
+     },
+     {
+      "text": "отварная рыба",
+      "is_correct": false
+     },
+     {
+      "text": "гренки",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Диета № 5 назначается при заболеваниях:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "гепатите",
+      "is_correct": true
+     },
+     {
+      "text": "циррозе печени",
+      "is_correct": true
+     },
+     {
+      "text": "дискинезии желчного пузыря",
+      "is_correct": true
+     },
+     {
+      "text": "холецистите",
+      "is_correct": true
+     },
+     {
+      "text": "язвенной болезни желудка",
+      "is_correct": false
+     },
+     {
+      "text": "энтерите",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Основные признаки врожденного вывиха бедра:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "гиперемия кожных покровов над суставом",
+      "is_correct": false
+     },
+     {
+      "text": "изменение длины конечности",
+      "is_correct": true
+     },
+     {
+      "text": "отек в области сустава",
+      "is_correct": false
+     },
+     {
+      "text": "развитие \"утиной\" походки",
+      "is_correct": true
+     },
+     {
+      "text": "искривление голеней",
+      "is_correct": false
+     },
+     {
+      "text": "ассимметрия кожных складок бедра",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "При уборке процедурного кабинета кушетка дезинфицируется:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "после каждого пациента",
+      "is_correct": true
+     },
+     {
+      "text": "в конце рабочего дня",
+      "is_correct": false
+     },
+     {
+      "text": "при проведении генеральной уборки",
+      "is_correct": false
+     },
+     {
+      "text": "2 раза в день",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "В биксе с фильтром материал сохраняет стерильность в течение:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "1 дня",
+      "is_correct": false
+     },
+     {
+      "text": "3-х дней",
+      "is_correct": false
+     },
+     {
+      "text": "7 дней",
+      "is_correct": false
+     },
+     {
+      "text": "20 дней",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Дезинфекция пузыря для льда, грелки проводится:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "0,015% раствором астеры (2-х кратное протирание)",
+      "is_correct": true
+     },
+     {
+      "text": "6% раствором перекиси водорода",
+      "is_correct": false
+     },
+     {
+      "text": "0,5% раствора хлорамина Б (полное погружение)",
+      "is_correct": false
+     },
+     {
+      "text": "Любым моющим средством",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Диспансеризация перед поступлением в 1 класс ребенка предполагает осмотр специалистами:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "урологом",
+      "is_correct": false
+     },
+     {
+      "text": "невропатологом",
+      "is_correct": true
+     },
+     {
+      "text": "фтизиатром",
+      "is_correct": false
+     },
+     {
+      "text": "хирургом",
+      "is_correct": true
+     },
+     {
+      "text": "логопедом",
+      "is_correct": true
+     },
+     {
+      "text": "стоматологом",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Диспансерному наблюдению в I группе здоровья подлежат дети?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "здоровые",
+      "is_correct": true
+     },
+     {
+      "text": "с хроническими заболеваниями",
+      "is_correct": false
+     },
+     {
+      "text": "с аномалиями конституции",
+      "is_correct": false
+     },
+     {
+      "text": "с фоновой патологией",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "К группе риска по туберкулезу относятся дети, имеющие:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "семейный контакт с больными",
+      "is_correct": true
+     },
+     {
+      "text": "аномалии конституции",
+      "is_correct": false
+     },
+     {
+      "text": "иммунодефицитные состояния",
+      "is_correct": false
+     },
+     {
+      "text": "сахарный диабет",
+      "is_correct": true
+     },
+     {
+      "text": "избыточный вес",
+      "is_correct": false
+     },
+     {
+      "text": "курс лечения кортикостероидами",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Родители при вакцинации детей имеет право на:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "информацию о вакцине",
+      "is_correct": true
+     },
+     {
+      "text": "информацию о возможных осложнениях",
+      "is_correct": true
+     },
+     {
+      "text": "выбор способа введения вакцины",
+      "is_correct": false
+     },
+     {
+      "text": "выбор дозы вакцины",
+      "is_correct": false
+     },
+     {
+      "text": "отказ от вакцинации",
+      "is_correct": true
+     },
+     {
+      "text": "возмещение ущерба вследствие проведенной вакцинации",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Постоянные противопоказания к вакцинации:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "злокачественные болезни",
+      "is_correct": true
+     },
+     {
+      "text": "фебрильные судороги",
+      "is_correct": false
+     },
+     {
+      "text": "анафилактический шок на предыдущую вакцинацию",
+      "is_correct": true
+     },
+     {
+      "text": "проградиентная неврологическая патология",
+      "is_correct": true
+     },
+     {
+      "text": "аномалия конституции",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "После проведения вакцинации сестра прививочного кабинета должна наблюдать за ребенком в течение:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "30 минут",
+      "is_correct": true
+     },
+     {
+      "text": "1-го часа",
+      "is_correct": false
+     },
+     {
+      "text": "2-х часов",
+      "is_correct": false
+     },
+     {
+      "text": "3-х часов",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Интервал между профилактическими прививками должен быть не менее?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "2-х недель",
+      "is_correct": false
+     },
+     {
+      "text": "3-хнедель",
+      "is_correct": true
+     },
+     {
+      "text": "45 дней",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Проба Манту проверяется через:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "12 и 24 часа",
+      "is_correct": false
+     },
+     {
+      "text": "24 и 48 часов",
+      "is_correct": false
+     },
+     {
+      "text": "48 и 72 часа",
+      "is_correct": true
+     },
+     {
+      "text": "72 и  90 часов",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Основные симптомы ревматизма:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "поражение крупных суставов",
+      "is_correct": true
+     },
+     {
+      "text": "поражение мелких суставов",
+      "is_correct": false
+     },
+     {
+      "text": "поражение сердца",
+      "is_correct": true
+     },
+     {
+      "text": "формирование деформации суставов",
+      "is_correct": false
+     },
+     {
+      "text": "\"летучесть\", симметричность поражения суставов",
+      "is_correct": true
+     },
+     {
+      "text": "отсутствие деформации суставов",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Побочные действия длительного приема преднизолона:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "синдром Иценко-Кушинга",
+      "is_correct": true
+     },
+     {
+      "text": "постоянная лихорадка",
+      "is_correct": false
+     },
+     {
+      "text": "синдром отмены",
+      "is_correct": true
+     },
+     {
+      "text": "эрозии, язвы желудка",
+      "is_correct": false
+     },
+     {
+      "text": "снижение массы тела",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Учетная медицинская форма № 30 - это:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "список лиц, подлежащих медицинскому осмотру",
+      "is_correct": false
+     },
+     {
+      "text": "контрольная карта диспансерного наблюдения",
+      "is_correct": true
+     },
+     {
+      "text": "амбулаторная карта",
+      "is_correct": false
+     },
+     {
+      "text": "справка о состоянии здоровья пациента",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Основные симптомы острого пиелонефрита:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "пиурия, дизурия",
+      "is_correct": true
+     },
+     {
+      "text": "гематурия, протеинурия",
+      "is_correct": false
+     },
+     {
+      "text": "отеки, гипертензия",
+      "is_correct": false
+     },
+     {
+      "text": "положительный симптом  Пастернацкого",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Сведения о профилактической прививке сестра внесет в:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "журнал переписи участка",
+      "is_correct": false
+     },
+     {
+      "text": "статистический талон",
+      "is_correct": false
+     },
+     {
+      "text": "экстренное извещение",
+      "is_correct": false
+     },
+     {
+      "text": "прививочный журнал",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Характерные признаки легочного кровотечения:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "ярко-красный цвет крови",
+      "is_correct": true
+     },
+     {
+      "text": "несвертываемая пенистая кровь",
+      "is_correct": true
+     },
+     {
+      "text": "темная кровь в виде сгустков",
+      "is_correct": false
+     },
+     {
+      "text": "наличие примесей пищи",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Причины кровотечения в первые три месяца беременности?",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "варикозное расширение вен влагалища",
+      "is_correct": false
+     },
+     {
+      "text": "предлежание плаценты",
+      "is_correct": false
+     },
+     {
+      "text": "угрожающий и начавшийся выкидыш",
+      "is_correct": true
+     },
+     {
+      "text": "прервавшаяся внематочная беременность",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Причины частых кровотечений в конце беременности?",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "начавшийся выкидыш",
+      "is_correct": false
+     },
+     {
+      "text": "разрыв матки",
+      "is_correct": true
+     },
+     {
+      "text": "предлежание плаценты",
+      "is_correct": true
+     },
+     {
+      "text": "пузырный занос",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Сестринское вмешательство при носовом кровотечении:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "прижатие крыла носа к носовой перегородке",
+      "is_correct": true
+     },
+     {
+      "text": "передняя тампонада носовых ходов",
+      "is_correct": true
+     },
+     {
+      "text": "прижигание слизистой 30% раствором ляписа",
+      "is_correct": false
+     },
+     {
+      "text": "проведение задней тампонады",
+      "is_correct": false
+     },
+     {
+      "text": "запрокинуть голову",
+      "is_correct": false
+     },
+     {
+      "text": "применить холод на область лба",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "При передней тампонаде носовых ходов марлевые тампоны смачиваются:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "стерильным глицирином",
+      "is_correct": false
+     },
+     {
+      "text": "раствором фурациллина",
+      "is_correct": false
+     },
+     {
+      "text": "борным спиртом",
+      "is_correct": false
+     },
+     {
+      "text": "3% раствором перекиси водорода",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Симптом почечной колики характерен для:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "опухоли почки",
+      "is_correct": false
+     },
+     {
+      "text": "мочекаменной болезни",
+      "is_correct": true
+     },
+     {
+      "text": "острого пиелонефрита",
+      "is_correct": false
+     },
+     {
+      "text": "острого цистита",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Сестринское вмешательство при острой задержке мочи:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "мониторинг состояния",
+      "is_correct": true
+     },
+     {
+      "text": "катетеризация мочевого пузыря",
+      "is_correct": true
+     },
+     {
+      "text": "применение мочегонных препаратов",
+      "is_correct": false
+     },
+     {
+      "text": "применение  анальгетиков",
+      "is_correct": false
+     },
+     {
+      "text": "консультация врача",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Характерные симптомы острого аппендицита:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "разлитая болезненность в правом подреберье",
+      "is_correct": false
+     },
+     {
+      "text": "локальная болезненность в правой подвздошной области",
+      "is_correct": true
+     },
+     {
+      "text": "местное напряжение брюшной стенки в правой подвздошной области",
+      "is_correct": true
+     },
+     {
+      "text": "рвота \"кофейной гущей\"",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Сестринское вмешательство при подозрении на острый аппендицит включает:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "применение пузыря со льдом",
+      "is_correct": true
+     },
+     {
+      "text": "экстренную госпитализацию в хирургический стационар",
+      "is_correct": true
+     },
+     {
+      "text": "применение слабительных препаратов и клизм",
+      "is_correct": false
+     },
+     {
+      "text": "применение грелки",
+      "is_correct": false
+     },
+     {
+      "text": "введение наркотических анальгетиков",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Сестринское вмешательство при остром приступе холецистита:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "применение грелки",
+      "is_correct": false
+     },
+     {
+      "text": "применение спазмолитических препаратов",
+      "is_correct": true
+     },
+     {
+      "text": "применение пузыря со льдом",
+      "is_correct": true
+     },
+     {
+      "text": "применение очистительной клизмы",
+      "is_correct": false
+     },
+     {
+      "text": "применение морфина",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Сестринское вмешательство при стенокардии:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "создать физический и психический покой",
+      "is_correct": true
+     },
+     {
+      "text": "провести оксигенотерапию с пеногасителями",
+      "is_correct": false
+     },
+     {
+      "text": "дать нитроглицерин",
+      "is_correct": true
+     },
+     {
+      "text": "дать мочегонные средства",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Нормальное число дыханий в минуту у новорожденных находится в пределах?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "60-80",
+      "is_correct": true
+     },
+     {
+      "text": "40-60",
+      "is_correct": false
+     },
+     {
+      "text": "30-20",
+      "is_correct": false
+     },
+     {
+      "text": "20-16",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Сроки нормального заживления пупочной ранки находятся в пределах?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "7-14 дней",
+      "is_correct": false
+     },
+     {
+      "text": "14-21 день",
+      "is_correct": true
+     },
+     {
+      "text": "21-28 дней",
+      "is_correct": false
+     },
+     {
+      "text": "30-35 дней",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Средняя прибавка тела за первый месяц жизни находится в пределах?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "800-1000 г",
+      "is_correct": false
+     },
+     {
+      "text": "600-800 г",
+      "is_correct": true
+     },
+     {
+      "text": "400-600 г",
+      "is_correct": false
+     },
+     {
+      "text": "400-200 г",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Плановая вакцинация проводится для предупреждения заболеваний:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "дифтерии",
+      "is_correct": true
+     },
+     {
+      "text": "кори",
+      "is_correct": true
+     },
+     {
+      "text": "брюшного тифа",
+      "is_correct": true
+     },
+     {
+      "text": "клещевого энцефалита",
+      "is_correct": false
+     },
+     {
+      "text": "полиомиелита",
+      "is_correct": false
+     },
+     {
+      "text": "вирусного гепатита",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Плановая вакцинопрофилактика полиомиелита начинается в возрасте?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "3 месяца",
+      "is_correct": true
+     },
+     {
+      "text": "1-1,5 года",
+      "is_correct": false
+     },
+     {
+      "text": "7-8 лет",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Сестринское вмешательство при стенокардии:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "опустить головной конец кровати",
+      "is_correct": false
+     },
+     {
+      "text": "дать таблетку нитроглицерина под язык, при необходимости",
+      "is_correct": true
+     },
+     {
+      "text": "ввести наркотические анальгетики",
+      "is_correct": false
+     },
+     {
+      "text": "мониторинг состояния, контроль АД, ЧСС, ЧДД",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Ведущие признаки бронхиальной астмы:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "приступы одышки с удлиненным вдохом",
+      "is_correct": false
+     },
+     {
+      "text": "кашель с розовой мокротой",
+      "is_correct": false
+     },
+     {
+      "text": "вынужденное положение  во время приступа",
+      "is_correct": true
+     },
+     {
+      "text": "приступы одышки с удлиненным выдохом",
+      "is_correct": true
+     },
+     {
+      "text": "\"бочкообразная\" грудная клетка",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Ведущие симптомы желудочного кровотечения:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "боль в эпигастральной области, изжога, запоры",
+      "is_correct": true
+     },
+     {
+      "text": "рвота цвета \"кофейной гущи\", дегтеобразный стул",
+      "is_correct": true
+     },
+     {
+      "text": "головокружение, слабость, снижение артериального давления",
+      "is_correct": true
+     },
+     {
+      "text": "боли в подвоздошной области слева, стул с незначительными",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Характеристика болей при гиперацидном гастрите:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "боли в эпигастральной области после еды, изжога",
+      "is_correct": true
+     },
+     {
+      "text": "боли в эпигастральной области, рвота \"кофейной гущей\"",
+      "is_correct": false
+     },
+     {
+      "text": "опоясывающие боли в животе, понос",
+      "is_correct": false
+     },
+     {
+      "text": "боли в эпигастральной области, анорексия",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Сестринское вмешательство при пищевом отравлении:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "промывание желудка, исследование промывных вод",
+      "is_correct": true
+     },
+     {
+      "text": "высокая очистительная клизма",
+      "is_correct": true
+     },
+     {
+      "text": "холод на эпигастральную область, голод",
+      "is_correct": false
+     },
+     {
+      "text": "дача активированного угля",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Основные симптомы гипергликемической комы:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "потеря аппетита, жажда, запах \"ацетона\" изо рта",
+      "is_correct": true
+     },
+     {
+      "text": "гипотония мышц, размягчение глазных яблок",
+      "is_correct": true
+     },
+     {
+      "text": "гипертония мышц, судороги",
+      "is_correct": false
+     },
+     {
+      "text": "потливость, тремор, головокружение, чувство голода",
+      "is_correct": false
+     },
+     {
+      "text": "сонливость, потеря сознания",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Факторы риска сахарного диабета:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "наследственный фактор",
+      "is_correct": true
+     },
+     {
+      "text": "ожирение",
+      "is_correct": true
+     },
+     {
+      "text": "психическая травма",
+      "is_correct": true
+     },
+     {
+      "text": "гипертензия",
+      "is_correct": false
+     },
+     {
+      "text": "избыточное употребление углеводов",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Основные симптомы сахарного диабета:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "высокая лихорадка",
+      "is_correct": false
+     },
+     {
+      "text": "жажда, полиурия",
+      "is_correct": true
+     },
+     {
+      "text": "олигурия, анурия",
+      "is_correct": false
+     },
+     {
+      "text": "гипертензия",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Ведущий симптом бронхиальной астмы:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "приступ удушья, с затрудненным выдохом",
+      "is_correct": true
+     },
+     {
+      "text": "кашель с \"малиновой\" мокротой",
+      "is_correct": false
+     },
+     {
+      "text": "приступ удушья с затрудненным вдохом",
+      "is_correct": false
+     },
+     {
+      "text": "кашель с гнойной мокротой, абсцедирование",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Ведущие симптомы очаговой пневмонии:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "навязчивый кашель, приступы экспираторного удушья",
+      "is_correct": false
+     },
+     {
+      "text": "кашель с обильной гнойной мокротой \"полным ртом\",",
+      "is_correct": false
+     },
+     {
+      "text": "кашель со слизисто-гнойной мокротой, боли в  грудной клетке",
+      "is_correct": true
+     },
+     {
+      "text": "боли в левой половине грудной клетки с иррадиацией в левое",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Возможные осложнения гипертонической болезни:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "инфаркт миокарда",
+      "is_correct": false
+     },
+     {
+      "text": "миокардит",
+      "is_correct": false
+     },
+     {
+      "text": "отек легких",
+      "is_correct": true
+     },
+     {
+      "text": "инсульт",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Сестринское вмешательство при гипертоническом кризе:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "приподнять головной конец кровати",
+      "is_correct": true
+     },
+     {
+      "text": "наложить венозные жгуты",
+      "is_correct": false
+     },
+     {
+      "text": "дать под язык таблетку капторприла 25 мг.",
+      "is_correct": true
+     },
+     {
+      "text": "вызвать врача",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Нормальные показатели артериального давления у лиц молодого возраста:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "АД 120/60- 140/90 мм рт.ст.",
+      "is_correct": true
+     },
+     {
+      "text": "АД 140/90- 160/95 мм рт.ст.",
+      "is_correct": false
+     },
+     {
+      "text": "АД больше 160/90 мм рт.ст.",
+      "is_correct": false
+     },
+     {
+      "text": "АД 100/50- 110/60 мм рт.ст.",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Факторы риска рака желудка:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "анацидный гастрит",
+      "is_correct": true
+     },
+     {
+      "text": "полипы желудка",
+      "is_correct": true
+     },
+     {
+      "text": "холецистит",
+      "is_correct": false
+     },
+     {
+      "text": "панкреатит",
+      "is_correct": false
+     },
+     {
+      "text": "гиперацидный гастрит",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Сестринское вмешательство при обмороке:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "приподнять ножной конец кровати",
+      "is_correct": true
+     },
+     {
+      "text": "расстегнуть стесняющую одежду, обеспечить доступ свежего",
+      "is_correct": true
+     },
+     {
+      "text": "дать нитроглицерин под язык",
+      "is_correct": false
+     },
+     {
+      "text": "применить физические методы раздражения",
+      "is_correct": true
+     },
+     {
+      "text": "приподнять головной конец кровати",
+      "is_correct": false
+     },
+     {
+      "text": "вызвать врача",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Сестринское вмешательство при почечной колике:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "тепло на поясничную область",
+      "is_correct": true
+     },
+     {
+      "text": "дать спазмолитики, анальгетики",
+      "is_correct": true
+     },
+     {
+      "text": "применить мочегонные средства",
+      "is_correct": false
+     },
+     {
+      "text": "провести катетеризацию мочевого пузыря",
+      "is_correct": false
+     },
+     {
+      "text": "вызвать врача",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Ведущие симптомы язвенной болезни 12-перстной кишки:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "боли в эпигастральной области через 30 минут после еды",
+      "is_correct": false
+     },
+     {
+      "text": "боли в правом подреберье через 4 часа после еды",
+      "is_correct": false
+     },
+     {
+      "text": "рвота, приносящая облегчение",
+      "is_correct": true
+     },
+     {
+      "text": "ночные голодные боли",
+      "is_correct": true
+     },
+     {
+      "text": "анорексия",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Ведущие симптомы менингококкового менингита у детей грудного возраста:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "симптом Брудзинского",
+      "is_correct": true
+     },
+     {
+      "text": "симптом Кернига",
+      "is_correct": true
+     },
+     {
+      "text": "выбухание и напряжение большого родничка",
+      "is_correct": true
+     },
+     {
+      "text": "громкий монотонный плач",
+      "is_correct": true
+     },
+     {
+      "text": "симптом Бабинского",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Источники заражения при вирусном гепатите А:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "больные в течение всего периода болезни",
+      "is_correct": false
+     },
+     {
+      "text": "носители",
+      "is_correct": true
+     },
+     {
+      "text": "больные в конце инкубационного периода",
+      "is_correct": true
+     },
+     {
+      "text": "реконвалесценты",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Путь передачи инфекции при вирусном гепатите А:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "фекально-оральный",
+      "is_correct": true
+     },
+     {
+      "text": "контактно-бытовой",
+      "is_correct": true
+     },
+     {
+      "text": "плацентарный",
+      "is_correct": false
+     },
+     {
+      "text": "половой",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Продолжительность продромального периода при вирусном гепатите А составляет:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "3-5 дней",
+      "is_correct": false
+     },
+     {
+      "text": "3- 21 день",
+      "is_correct": false
+     },
+     {
+      "text": "15-30 дней",
+      "is_correct": true
+     },
+     {
+      "text": "1-4 месяца",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Основной путь передачи инфекции при вирусном гепатите В:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "фекально-оральный",
+      "is_correct": false
+     },
+     {
+      "text": "трансмиссивный",
+      "is_correct": false
+     },
+     {
+      "text": "половой",
+      "is_correct": true
+     },
+     {
+      "text": "парентеральный",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Продолжительность продромального (безжелтушного) периода при вирусном гепатите В составляет:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "3-5 дней",
+      "is_correct": false
+     },
+     {
+      "text": "15-30 дней",
+      "is_correct": false
+     },
+     {
+      "text": "60-120 дней",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Характерные симптомы ветряной оспы:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "везикуло-папулезная сыпь, в разной стадии развития",
+      "is_correct": false
+     },
+     {
+      "text": "увеличение затылочных лимфоузлов, крупноточечная сыпь",
+      "is_correct": true
+     },
+     {
+      "text": "коньюнктивит, крупнопятнистая сыпь, с последующим шелушением",
+      "is_correct": false
+     },
+     {
+      "text": "повторная рвота, геморрагическая сыпь",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Характерные симптомы локализованной формы дифтерии зева:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "на миндалинах налет серо-белого цвета в виде островков или",
+      "is_correct": true
+     },
+     {
+      "text": "гиперемированные,  увеличенные миндалины с желтоватым налетом",
+      "is_correct": false
+     },
+     {
+      "text": "образование эррозивных поверхностей на миндалинах при попытках",
+      "is_correct": true
+     },
+     {
+      "text": "отечность, гиперемия задней стенки глотки",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Основные симптомы скарлатины:",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "ангина, мелкоточечная яркая сыпь на гиперемированном фоне",
+      "is_correct": true
+     },
+     {
+      "text": "увеличение затылочных лимфоузлов, крупноточечная сыпь",
+      "is_correct": false
+     },
+     {
+      "text": "коньюнктивит, крупнопятнистая сыпь, с последующим шелушением",
+      "is_correct": false
+     },
+     {
+      "text": "повторная рвота, геморрагическая сыпь",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Вторичная профилактика дифтерии включает:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "проведение массовой иммунизации населения",
+      "is_correct": false
+     },
+     {
+      "text": "раннее выявление и изоляция заболевших",
+      "is_correct": true
+     },
+     {
+      "text": "взятие мазка из зева у пациентов с ангинами",
+      "is_correct": true
+     },
+     {
+      "text": "проведение заключительной дезинфекции",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Основной путь передачи менингококковой инфекции?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "воздушно-капельный",
+      "is_correct": true
+     },
+     {
+      "text": "алиментарный",
+      "is_correct": false
+     },
+     {
+      "text": "трансмиссивный",
+      "is_correct": false
+     },
+     {
+      "text": "водный",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Признаки ботулизма:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "геморрагическая  сыпь",
+      "is_correct": false
+     },
+     {
+      "text": "расстройство глотания",
+      "is_correct": true
+     },
+     {
+      "text": "расстройство зрения",
+      "is_correct": true
+     },
+     {
+      "text": "рвота, частый жидкий стул",
+      "is_correct": true
+     },
+     {
+      "text": "расстройство дыхания",
+      "is_correct": true
+     },
+     {
+      "text": "запоры и вздутие живота",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Тактика сестринского вмешательства в период максимального повышения температуры:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "растереть кожу раствором столового уксуса",
+      "is_correct": true
+     },
+     {
+      "text": "положить холодный компресс на лоб",
+      "is_correct": true
+     },
+     {
+      "text": "приложить грелку к ногам",
+      "is_correct": false
+     },
+     {
+      "text": "положить холод на магистральные сосуды",
+      "is_correct": true
+     },
+     {
+      "text": "обеспечить обильным питьем",
+      "is_correct": true
+     },
+     {
+      "text": "провести горячие ножные ванны",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Тактика сестринского вмешательства при критическом снижении температуры:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "приложить грелку к ногам",
+      "is_correct": true
+     },
+     {
+      "text": "проводить частую смену белья",
+      "is_correct": true
+     },
+     {
+      "text": "растереть кожу 40% раствором спирта",
+      "is_correct": false
+     },
+     {
+      "text": "напоить теплым чаем",
+      "is_correct": true
+     },
+     {
+      "text": "обеспечить высококалорийным питанием",
+      "is_correct": false
+     },
+     {
+      "text": "проводить мониторинг жизненно-важных функций организма",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Российское законодательство предусматривает юридическую ответственность медицинской сестры при:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "нарушении техники манипуляций, повлекших смерть пациента",
+      "is_correct": true
+     },
+     {
+      "text": "побочном действии медикаментозных средств",
+      "is_correct": true
+     },
+     {
+      "text": "хищении лекарственных средств",
+      "is_correct": false
+     },
+     {
+      "text": "неоказании помощи пациенту, приведшим к ухудшению или смерти",
+      "is_correct": true
+     },
+     {
+      "text": "обжаловании действий администрации больницы",
+      "is_correct": false
+     },
+     {
+      "text": "нарушении правил асептики, приведшим к распространению",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "К физиологическим потребностям, согласно иерархии по Маслоу, относятся:",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "дышать",
+      "is_correct": true
+     },
+     {
+      "text": "адекватно есть, пить",
+      "is_correct": true
+     },
+     {
+      "text": "определять отеки",
+      "is_correct": false
+     },
+     {
+      "text": "измерять артериальное давление",
+      "is_correct": false
+     },
+     {
+      "text": "поддерживать нормальную температуру тела",
+      "is_correct": true
+     }
+    ]
+   }
+  ]
+ },
+ "room": {
+  "name": "Комната 1",
+  "public_id": "af3feb02-90c1-4353-871d-213f938d9c84",
+  "time_limit_mode": "auto",
+  "time_limit_minutes": null,
+  "attempts_unlimited": true,
+  "allowed_attempts": null,
+  "shuffle_questions": true,
+  "shuffle_options": true,
+  "selection_mode": "per_attempt",
+  "show_results": true,
+  "show_answers": true,
+  "show_correct_answers": true,
+  "grade_3_min_percent": 70,
+  "grade_4_min_percent": 80,
+  "grade_5_min_percent": 90,
+  "grade_attempt_mode": "best",
+  "questions_sample_size": 11
+ },
+ "topic_quotas": []
+}

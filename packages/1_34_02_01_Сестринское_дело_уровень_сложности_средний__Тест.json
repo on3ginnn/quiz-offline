@@ -1,0 +1,267 @@
+{
+ "schema_version": 3,
+ "kind": "room_package",
+ "exported_at": "2026-10-12T06:34:07.636521+00:00",
+ "quiz": {
+  "title": "34.02.01 Сестринское дело (уровень сложности — средний)",
+  "kind": "single",
+  "questions": [
+   {
+    "text": "При каком состоянии показано измерение центрального венозного давления (ЦВД)?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "Артериальная гипертензия",
+      "is_correct": false
+     },
+     {
+      "text": "Острая кровопотеря",
+      "is_correct": true
+     },
+     {
+      "text": "Бронхиальная астма",
+      "is_correct": false
+     },
+     {
+      "text": "Сахарный диабет",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Укажите основные признаки гипогликемии (несколько ответов):",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "Потливость",
+      "is_correct": true
+     },
+     {
+      "text": "Сонливость",
+      "is_correct": false
+     },
+     {
+      "text": "Тремор",
+      "is_correct": true
+     },
+     {
+      "text": "Сухость кожи",
+      "is_correct": false
+     },
+     {
+      "text": "Тахикардия",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Какое положение следует придать пациенту при приступе удушья?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "Лежа на спине",
+      "is_correct": false
+     },
+     {
+      "text": "Полусидя (Фаулера)",
+      "is_correct": true
+     },
+     {
+      "text": "Лежа на животе",
+      "is_correct": false
+     },
+     {
+      "text": "Тренделенбурга",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какие действия медсестры при анафилактическом шоке первоочередные? (несколько ответов)",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "Введение адреналина",
+      "is_correct": true
+     },
+     {
+      "text": "Вызов врача",
+      "is_correct": true
+     },
+     {
+      "text": "Введение антибиотиков",
+      "is_correct": false
+     },
+     {
+      "text": "Обеспечение проходимости дыхательных путей",
+      "is_correct": true
+     },
+     {
+      "text": "Измерение температуры",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какой путь введения лекарственного средства обеспечивает самый быстрый эффект?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "Пероральный",
+      "is_correct": false
+     },
+     {
+      "text": "Подкожный",
+      "is_correct": false
+     },
+     {
+      "text": "Внутривенный",
+      "is_correct": true
+     },
+     {
+      "text": "Внутримышечный",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Что относится к признакам воспаления? (несколько ответов)",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "Покраснение",
+      "is_correct": true
+     },
+     {
+      "text": "Боль",
+      "is_correct": true
+     },
+     {
+      "text": "Бледность",
+      "is_correct": false
+     },
+     {
+      "text": "Отек",
+      "is_correct": true
+     },
+     {
+      "text": "Повышение температуры",
+      "is_correct": true
+     }
+    ]
+   },
+   {
+    "text": "Какова нормальная частота дыхания у взрослого человека?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "8–10 в минуту",
+      "is_correct": false
+     },
+     {
+      "text": "12–20 в минуту",
+      "is_correct": true
+     },
+     {
+      "text": "20–30 в минуту",
+      "is_correct": false
+     },
+     {
+      "text": "30–40 в минуту",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какие меры профилактики внутрибольничной инфекции должна соблюдать медсестра? (несколько ответов)",
+    "question_type": "multiple",
+    "options": [
+     {
+      "text": "Гигиена рук",
+      "is_correct": true
+     },
+     {
+      "text": "Использование СИЗ",
+      "is_correct": true
+     },
+     {
+      "text": "Сокращение времени общения с пациентом",
+      "is_correct": false
+     },
+     {
+      "text": "Стерилизация инструментов",
+      "is_correct": true
+     },
+     {
+      "text": "Игнорирование стандартов асептики",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "При каком состоянии показано применение пузыря со льдом?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "Гипотермия",
+      "is_correct": false
+     },
+     {
+      "text": "Кровотечение",
+      "is_correct": true
+     },
+     {
+      "text": "Гипертонический криз",
+      "is_correct": false
+     },
+     {
+      "text": "Перелом без смещения",
+      "is_correct": false
+     }
+    ]
+   },
+   {
+    "text": "Какой показатель оценивает насыщение крови кислородом?",
+    "question_type": "single",
+    "options": [
+     {
+      "text": "АД",
+      "is_correct": false
+     },
+     {
+      "text": "ЧСС",
+      "is_correct": false
+     },
+     {
+      "text": "SpO₂",
+      "is_correct": true
+     },
+     {
+      "text": "ЦВД",
+      "is_correct": false
+     }
+    ]
+   }
+  ]
+ },
+ "room": {
+  "name": "Тест",
+  "public_id": "2fd77bc9-12de-415d-83e1-2a3ac465c684",
+  "time_limit_mode": "manual",
+  "time_limit_minutes": 10,
+  "attempts_unlimited": false,
+  "allowed_attempts": 1,
+  "shuffle_questions": false,
+  "shuffle_options": false,
+  "selection_mode": "per_attempt",
+  "show_results": true,
+  "show_answers": false,
+  "show_correct_answers": false,
+  "grade_3_min_percent": 70,
+  "grade_4_min_percent": 80,
+  "grade_5_min_percent": 90,
+  "grade_attempt_mode": "best",
+  "questions_sample_size": null
+ },
+ "topic_quotas": []
+}
